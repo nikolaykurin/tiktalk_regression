@@ -1,0 +1,37 @@
+<div id="tabPatientPlansAdd" class="tab-plan display-none">
+
+    {% partial 'content-header' header='Add Sound' %}
+
+    <div class="form-group">
+        <label class="pnl-header" for="sound">Sound</label>
+        <select
+            id="selectSounds"
+            class="custom-select form-control mr-sm-2"
+        >
+            <option value=0>Please select Sound to treat</option>
+            {% for sound in sounds %}
+                {% set optionSelected = "" %}
+                <option {{optionSelected}} value="{{ sound.id }}">
+                    {{ sound.sound }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="control float-right">
+        <button
+            id="btnCancelInsertPlan"
+            type="button"
+            class="btn-gradient"
+        >
+            Cancel
+        </button>
+        <button
+            id="btnInsertPlan"
+            class="btn-gradient"
+        >
+            Save
+        </button>
+    </div>
+
+</div>

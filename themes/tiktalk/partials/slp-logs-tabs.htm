@@ -1,0 +1,48 @@
+<div class="pnl-slp-logs">
+    
+    <div class="tab-slp-logs">
+        <div class="tbl">
+            <div class="tbl-head">
+                <div class="row tbl-row" >
+                    <div class="col-sm-2">Date</div>
+                    <div class="col-sm-3">Action</div>
+                    <div class="col-sm-4">Description</div>
+                    <div class="col-sm-3">Comment</div>
+                </div>
+            </div>
+            <div class="tbl-body">
+                {% for log in slpLogs %}
+                    <div class="row tbl-row" data-id="{{log.id}}">
+                        <div class="col-sm-2">
+                            {{log.created_at}}
+                        </div>
+                        <div class="col-sm-3">
+                            {{actions[log.action_id]}}
+                        </div>
+                        <div class="col-sm-4">
+                            {{log.description}}
+                        </div>
+                        <div class="col-sm-3 td-slp-comment">
+                            {% if log.slp_comment %}
+                                {{log.slp_comment}}
+                            {% else %}
+                                <button class="btn-gradient btn-edit-slp-comment" data-id="{{log.id}}">Edit</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="tab-slp-comment display-none">
+        <div class="panel-edit">
+            <div class="form-group">
+                <label>Comment:</label>
+                <textarea class="form-control edt-slp-comment" rows="8" ></textarea>
+            </div>
+            <div class="control">
+                <button class="btn-gradient btn-submit-slp-comment" data-id="" >OK</button>
+            </div>
+        </div>
+    </div>
+</div>

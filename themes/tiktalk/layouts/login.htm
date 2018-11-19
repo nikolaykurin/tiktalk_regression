@@ -1,0 +1,19 @@
+description = "Login layout"
+
+==
+<!DOCTYPE html>
+<html>
+    {% partial 'head' %}
+    <body class="login-page" background="{{ 'assets/images/login-bg.jpg'|theme }}">
+        <div class="container-fluid">
+            <div class="row m-auto">
+                <!-- Content -->
+                <main>
+                    {% page %}
+                </main>
+            </div>
+        </div>
+
+        {% partial 'js' %}
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<ul class="nav">
+    <li id="navItemByDates" class="nav-item {{navId == 0 ? 'active' : ''}}">
+        <a class="nav-link" href="javascript:void(0);">By Dates</a>
+    </li>
+    <li id="navItemByWords" class="nav-item {{navId == 1 ? 'active' : ''}}">
+        <a class="nav-link" href="javascript:void(0);">By Words</a>
+    </li>
+</ul>
+{% if navId == 0 %} 
+    {% partial 'patient/tab-reports-by-dates' %}
+{% else %}
+    {% partial 'patient/tab-reports-by-words' %}
+{% endif %}
+
+{% if reports.pagination.pgCount > 1 %}
+    <ul id="reportsPagination" class="pagination">
+        {% set disPrev = reports.pagination.pageNum == 1 ? 'disabled' : '' %}
+        <li class="page-item {{disPrev}}" data-page-num="{{reports.pagination.pageNum-1}}">
+            <a class="page-link" href="javascript:void(0);">
+                Previous
+            </a>
+        </li>
+        {% for pg in 1..reports.pagination.pgCount %}
+            {% set active = reports.pagination.pageNum == pg ? 'active' : '' %}
+            <li class="page-item {{active}}" data-page-num="{{pg}}">
+                <a class="page-link" href="javascript:void(0);">
+                    {{pg}}
+                </a>
+            </li>
+        {% endfor %}
+        {% set disNext = reports.pagination.pageNum == reports.pagination.pgCount ? 'disabled' : '' %}
+        <li class="page-item {{disNext}}" data-page-num="{{reports.pagination.pageNum+1}}">
+            <a class="page-link" href="javascript:void(0);">
+                Next
+            </a>
+        </li>
+    </ul>
+{% endif %}

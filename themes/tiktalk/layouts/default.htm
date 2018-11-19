@@ -1,0 +1,27 @@
+description = "Default layout"
+
+[slp_session]
+redirect = "login"
+==
+<!DOCTYPE html>
+<html>
+    {% partial 'head' %}
+
+    <body>
+
+        <!-- Header -->
+        {% partial 'site/header' %}
+        <!-- Content -->
+        <main class="col-sm-12 pt-3">
+            {% page %}
+        </main>
+
+        {% partial 'js' %}
+    </body>
+</html>
+
+<style>
+    .dropdown-menu {
+        left: -50px;
+    }
+</style>

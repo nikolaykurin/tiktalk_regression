@@ -1,0 +1,120 @@
+<div class="modal fade" id="modifyPatientModal" tabindex="-1" role="dialog" aria-labelledby="modify-patient" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="pnl-header" id="edit-device-title">{{  patient.id ? "Edit Patient" : "Add Patient"}}</div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                {{ form_open({ request: 'onUpdatePatient', files: true }) }}
+
+                    <input type="hidden" name="id" value="{{ patient.id }}">
+                    <input type="hidden" name="slp_id" value="{{ user.id }}">
+                    <input type="hidden" name="slp_first_name" value="{{ user.first_name }}">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="frmFirstName"
+                                name="first_name"
+                                value="{{patient.first_name}}"
+                                required
+                                placeholder="First Name"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="last_name"
+                                value="{{patient.last_name}}"
+                                required
+                                placeholder="Last Name"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <input
+                                type="date"
+                                class="form-control"
+                                name="birth_date"
+                                value="{{patient.birth_date}}"
+                                required
+                                placeholder="Date of Birth"
+                            >
+                        </div>
+                    </div>
+                    <div class="col-sm-6 div-upload">
+                        <div class="wrap-avatar">
+                            <img
+                                id="frmAvatarPreview"
+                                class="patient-avatar rounded-circle"
+                                data-changed="false"
+                                src="{{ patient.avatar ? patient.avatar.path : 'assets/images/patient-def-avatar.png'|theme }}"
+                                width="130"
+                                height="auto"
+                                style="margin-bottom:15px"
+                            >
+                            <label class="plus-btn">
+                                <input name="avatar" type="file" accept=".png, .jpg, .jpeg"/>
+                            </label>
+                        </div>
+                        <label id="frmAvatarPreviewLabel" class="photo-text">{{ patient.avatar ? '' : 'No photo chosen' }}</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <select class="form-control selectpicker" name="registered_device_id" data-live-search="true" data-dropup-auto="false" data-size="3">
+                        {% for id,device_id in devices %}
+                            {% set optSelected = id == patient.registered_device_id ? 'selected' : '' %}
+                            <option {{optSelected}} value="{{ id }}">
+                                {{ device_id }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                    <div class="row">
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <select class="form-control" id="frmCountry" name="country_id">
+                                    {% for id,country in countries %}
+                                        {% set optSelected = id == patient.country_id ? 'selected' : '' %}
+                                        <option {{optSelected}} value="{{ id }}">
+                                            {{ country }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <select class="form-control" name="language_id">
+                                    {% for id,language in languages %}
+                                        {% set optSelected = id == patient.language_id ? 'selected' : '' %}
+                                        <option {{optSelected}} value="{{ id }}">
+                                            {{ language }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" class="btn-gradient">
+                        {{  patient.id ? "Save" : "Add"}}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

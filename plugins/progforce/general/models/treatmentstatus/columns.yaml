@@ -1,0 +1,11 @@
+columns:
+    id:
+        label: progforce.general::lang.treatmentstatuses.id
+        type: number
+        sortable: true
+        searchable: true
+    description:
+        label: progforce.general::lang.treatmentstatuses.description
+        type: text
+        sortable: true
+        searchable: true

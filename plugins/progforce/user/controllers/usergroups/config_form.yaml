@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: progforce.user::lang.group.label
+
+# Model Form Field configuration
+form: $/progforce/user/models/usergroup/fields.yaml
+
+# Model Class name
+modelClass: Progforce\User\Models\UserGroup
+
+# Default redirect location
+defaultRedirect: progforce/user/usergroups
+
+# Create page
+create:
+    title: progforce.user::lang.groups.create_title
+    redirect: progforce/user/usergroups/update/:id
+    redirectClose: progforce/user/usergroups
+
+# Update page
+update:
+    title: progforce.user::lang.groups.update_title
+    redirect: progforce/user/usergroups
+    redirectClose: progforce/user/usergroups
+
+# Preview page
+preview:
+    title: progforce.user::lang.groups.update_title

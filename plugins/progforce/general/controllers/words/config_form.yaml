@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Word en_us
+
+# Model Form Field configuration
+form: $/progforce/general/models/wordbase/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\Word
+
+# Default redirect location
+defaultRedirect: progforce/general/words
+
+# Create page
+create:
+    title: Create Word
+    redirect: progforce/general/words/update/:id
+    redirectClose: progforce/general/words
+
+# Update page
+update:
+    title: Edit Word
+    redirect: progforce/general/words
+    redirectClose: progforce/general/words
+
+# Preview page
+preview:
+    title: Preview Word

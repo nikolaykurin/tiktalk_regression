@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Locations Within Word
+
+# Model Form Field configuration
+form: $/progforce/general/models/locationwithinwordaux/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\LocationWithinWordAux
+
+# Default redirect location
+defaultRedirect: progforce/general/locationswithinwordaux
+
+# Create page
+create:
+    title: Create Location Within Word
+    redirect: progforce/general/locationswithinwordaux/update/:id
+    redirectClose: progforce/general/locationswithinwordaux
+
+# Update page
+update:
+    title: Edit Location Within Word
+    redirect: progforce/general/locationswithinwordaux
+    redirectClose: progforce/general/locationswithinwordaux
+
+# Preview page
+preview:
+    title: Preview Location Within Word

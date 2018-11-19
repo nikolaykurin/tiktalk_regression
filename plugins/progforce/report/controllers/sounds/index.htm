@@ -1,0 +1,56 @@
+<?php
+    //dd(get_defined_vars());
+?>
+
+<div class="toolbar-widget list-header" id="Toolbar-listToolbar">
+    <h2>Sounds quantity report</h2>
+    <div class="control-toolbar">
+        <!-- Control Panel -->
+        <div class="toolbar-item toolbar-primary">
+            <div data-control="toolbar" data-disposable="">
+                <form>
+                    <select class="form-control custom-select  select2-hidden-accessible" name="lang">
+                        <?php foreach($list as $id=>$code) { ?>
+                            <option value="<?= $id ?>"><?= $code ?></option>
+                        <?php } ?>
+                    </select>
+                    <button
+                        class="btn btn-info oc-icon-arrow-circle-up"
+                        data-request="onSoundReport"
+                        data-attach-loading
+                    >
+                        Download
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <h2>Words report</h2>
+    <div class="control-toolbar">
+        <!-- Control Panel -->
+        <div class="toolbar-item toolbar-primary">
+            <div data-control="toolbar" data-disposable="">
+                <form>
+                    <select class="form-control custom-select  select2-hidden-accessible" name="lang">
+                        <?php foreach($list as $id=>$code) { ?>
+                            <option value="<?= $id ?>"><?= $code ?></option>
+                        <?php } ?>
+                    </select>
+                    <select class="form-control custom-select  select2-hidden-accessible" name="report_type">
+                        <option value="with-images">With Images</option>
+                        <option value="without-images">Without Images</option>
+                        <option value="with-audio">With Audio</option>
+                        <option value="without-audio">Without Audio</option>
+                    </select>
+                    <button
+                        class="btn btn-info oc-icon-arrow-circle-up"
+                        data-request="onWordsReport"
+                        data-attach-loading
+                    >
+                        Download
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

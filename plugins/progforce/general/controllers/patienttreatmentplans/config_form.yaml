@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Patient Treatment Plan
+
+# Model Form Field configuration
+form: $/progforce/general/models/patienttreatmentplan/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\PatientTreatmentPlan
+
+# Default redirect location
+defaultRedirect: progforce/general/patienttreatmentplans
+
+# Create page
+create:
+    title: Create Patient Treatment Plan
+    redirect: progforce/general/patienttreatmentplans/update/:id
+    redirectClose: progforce/general/patienttreatmentplans
+
+# Update page
+update:
+    title: Edit Patient Treatment Plan
+    redirect: progforce/general/patienttreatmentplans
+    redirectClose: progforce/general/patienttreatmentplans
+
+# Preview page
+preview:
+    title: Preview Patient Treatment Plan

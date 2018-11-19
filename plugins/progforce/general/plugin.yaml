@@ -1,0 +1,98 @@
+plugin:
+    name: General
+    description: 'progforce.general::lang.plugin.description'
+    author: Progforce
+    icon: oc-icon-gear
+    homepage: ''
+navigation:
+    general:
+        label: 'progforce.general::lang.plugin.name'
+        url: progforce/general/languageconfigurations
+        icon: icon-gear
+        sideMenu:
+            languageconfigurations:
+                label: 'progforce.general::lang.languageconfigurations.menu_item'
+                url: progforce/general/languageconfigurations
+                icon: icon-globe
+            sounds:
+                label: Sounds
+                url: progforce/general/sounds
+                icon: icon-globe
+            words:
+                label: 'progforce.general::lang.words.menu_item'
+                url: progforce/general/words
+                icon: icon-globe
+            wordsheil:
+                label: 'progforce.general::lang.words.menu_item_he_il'
+                url: progforce/general/wordsheil
+                icon: icon-globe
+            utterancetypes:
+                label: Utterance Types
+                url: progforce/general/utterancetypes
+                icon: icon-globe
+            prerecordedwords:
+                label: 'progforce.general::lang.prerecordedwords.menu_item'
+                url: progforce/general/prerecordedwords
+                icon: icon-globe
+            complexities:
+                label: 'progforce.general::lang.complexities.menu_item'
+                url: progforce/general/complexities
+                icon: icon-gear
+            countries:
+                label: 'progforce.general::lang.countries.menu_item'
+                url: progforce/general/countries
+                icon: icon-flag
+            locationwithinword:
+                label: 'progforce.general::lang.partsofspeech.menu_item'
+                url: progforce/general/locationswithinwordaux
+                icon: icon-gear
+            patienttreatmentplans:
+                label: 'progforce.general::lang.patienttreatmentplans.menu_item'
+                url: progforce/general/patienttreatmentplans
+                icon: icon-gear
+            treatmentphases:
+                label: 'progforce.general::lang.treatmentphases.menu_item'
+                url: progforce/general/treatmentphases
+                icon: icon-gear
+            treatmentstatuses:
+                label: 'progforce.general::lang.treatmentstatuses.menu_item'
+                url: progforce/general/treatmentstatuses
+                icon: icon-gear
+            side-menu-game-modes:
+                label: 'progforce.general::lang.gamemodes.menu_item'
+                url: progforce/general/gamemodes
+                icon: icon-gear
+            side-menu-function-within-phoneme:
+                label: 'Function Within Phoneme'
+                url: progforce/general/functionswithinphoneme
+                icon: icon-gear
+            side-menu-item-partsofspeach:
+                label: 'Parts Of Speach'
+                url: progforce/general/partsofspeach
+                icon: icon-gear
+            side-menu-issues:
+                label: 'Issue Codes'
+                url: progforce/general/issuecodes
+                icon: icon-exclamation-circle
+            whitelabels:
+                label: White Labels
+                url: progforce/general/whitelabels
+                icon: icon-gear
+            registereddevices:
+                label: 'progforce.general::lang.registereddevices.menu_item'
+                url: progforce/general/registereddevices
+                icon: icon-gear
+            scoringalgorithms:
+                label: 'progforce.general::lang.scoringalgorithms.menu_item'
+                url: progforce/general/scoringalgorithms
+                icon: icon-gear
+
+    logs:
+        label: 'progforce.general::lang.logs.menu_item'
+        url: progforce/general/logs
+        icon: icon-gear
+        sideMenu:
+            languageconfigurations:
+                label: 'progforce.general::lang.logs.menu_item'
+                url: progforce/general/logs
+                icon: icon-gear

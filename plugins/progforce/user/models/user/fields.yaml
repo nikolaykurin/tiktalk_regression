@@ -1,0 +1,72 @@
+fields:
+
+    first_name:
+        label: progforce.user::lang.user.first_name
+        type: text
+        span: auto
+    last_name:
+        label: progforce.user::lang.user.last_name
+        type: text
+        span: auto
+    age_calc@preview:
+        label: progforce.user::lang.user.age
+        type: number
+        span: auto       
+    birth_date@update:
+        label: progforce.user::lang.user.birth_date
+        type: datepicker
+        yearRange: 90
+        mode: date
+        span: auto
+    slp:
+        label: progforce.user::lang.user.slp
+        type: relation
+        select: first_name
+        span: auto
+    slp_first_name:
+        label: progforce.user::lang.user.slp_first_name
+        type: text
+        span: auto
+    country:
+        label: progforce.user::lang.user.country
+        type: relation
+        select: description
+        span: auto
+    language:
+        label: progforce.user::lang.user.language
+        type: relation
+        select: language
+        span: auto
+    registered_device_id:
+        label: Device
+        type: dropdown
+        emptyOption: 'Not Selected'
+        span: auto
+
+    developer_mode:
+        label: progforce.user::lang.user.developer_mode
+        type: switch
+        span: auto
+        comment: progforce.user::lang.user.comment_developer_mode
+    am_actions:
+        label: progforce.user::lang.user.am_actions
+        type: partial
+        span: left
+    am_recordings_actions:
+        label: progforce.user::lang.user.am_recordings_actions
+        type: partial
+        span: left
+    training_recordings_actions:
+        label: progforce.user::lang.user.training_recordings_actions
+        type: partial
+        span: right
+
+secondaryTabs:
+    fields:
+
+        avatar:
+            label: progforce.user::lang.user.avatar
+            type: fileupload
+            mode: image
+            imageHeight: 260
+            imageWidth: 260

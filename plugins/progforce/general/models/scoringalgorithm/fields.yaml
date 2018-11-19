@@ -1,0 +1,14 @@
+fields:
+    id:
+        label: ID
+        hidden: true
+    language_id:
+        label: Language
+    field:
+        label: progforce.general::lang.scoringalgorithms.field
+        type: text
+        span: auto
+    value:
+        label: progforce.general::lang.scoringalgorithms.value
+        type: number
+        span: auto

@@ -1,0 +1,137 @@
+.with-sidebar {
+    margin-left: @sidebar-width;
+    padding: 30px;
+}
+
+.patient-header {
+    display: none;
+    .font(rubik-bold, 20px);
+    .text-overflow;
+    margin-bottom: 20px;
+    .patient-avatar {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        margin-right: 10px;
+    }
+}
+
+.pnl-patient-content .pnl-profile {
+    margin-bottom: 35px;
+    .patient-avatar {
+        float:left;
+        height: 150px;
+        object-fit: cover;
+        width: 150px;
+    }
+}
+
+#tabPatientPlans {
+    display: none;
+    padding-bottom: 162px;
+}
+
+#tabPatientPlansPhases {
+    #tblPhases {
+        .tbl-row {
+            padding: 0 0 3px;
+        }
+        .btn-drag {
+            float: left;
+            margin-top: 6px;
+        }
+        .pnl-select-phase {
+            padding-left: 30px;
+        }
+    }
+    .pnl-phases {
+        background-color: #8da5a5;
+        margin: 5px 0 20px;
+        padding: 15px 30px;
+        #btnAddPhase {
+            margin-left: 26px;
+            margin-top: 10px;
+        }
+    }
+    .phase-status-date {
+        color: #ffff;
+    }
+    .control {
+        text-align:right;
+    }
+}
+
+#tabPatientReports {
+    display: none;
+    .active {
+        font-weight: bold;
+    }
+    .patient-progress {
+        width: 30%;
+        margin-bottom: 30px;
+        .sel-progress-sound {
+            margin-bottom: 15px;
+        }
+        .progress {
+            height: 50px;
+            #barProgress2 {
+                background: #d1d1d1;
+            }
+        }
+    }
+    .reports-filter {
+        #filterMode {
+            width: 150px;
+        }
+        #filterNumber {
+            width: 80px;
+        }
+        #filterPeriod {
+            width: 140px;
+        }
+    }
+    .btn-link {
+        text-decoration: none;
+    }
+    .img-word {
+        width: 170px;
+        height: 80px;
+    }
+}
+
+#tblPlans {
+    padding: 0 15px;
+    margin-bottom: 40px;
+    .tbl-head {
+        .tbl-row {
+            div:first-child {
+                padding-left: 47px;
+            }
+        }
+    }
+    .td-actions {
+        text-align: right;
+    }
+    .btn-drag {
+        float: left;
+        margin-right: 10px
+    }
+    .btn-remove-plan {
+    }
+}
+
+.slp-logs-static {
+    position: fixed;
+    bottom: 0;
+    padding: 20px 0;
+    width: 93%;
+    background-color: white;
+    border-top:  1px solid lightgray;
+    .tbl {
+        height: 150px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        margin-top: 20px;
+    }
+}
+

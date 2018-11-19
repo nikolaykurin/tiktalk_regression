@@ -1,0 +1,110 @@
+<div class="report-widget">
+    <h3>Version Controller</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Files</h4>
+            <div class="table-div">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Version</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                        $id = 0;
+                        foreach ($files as $key=>$value) :
+                    ?>
+                    <tr>
+                        <th><?php echo ($key) ?></th>
+                        <th><?php echo($value['version']) ?></th>
+                        <th>
+                            <button type="button" class="btn btn-danger" onclick="onDeleteFile('<?php echo ($key) ?>')">Delete</button>
+                            <button type="button" class="btn btn-default" onclick="copyRefToClipboard('<?php echo ($key) ?>')">Get URL</button>
+                            <button type="button" class="btn btn-danger" onclick="onShowEdit('<?php echo ($id) ?>')" title="Do not change version without uploading new file!">Edit</button>
+                            <div class="no-display" id="edit-<?php echo ($id) ?>">
+                                <p class="warning text-danger">Attention!</p>
+                                <p class="warning text-warning">You change the version without uploading a new file!</p>
+                                <?= Form::open([ 'request' => 'onVersionChange', 'class' => 'form-inline' ]) ?>
+
+                                    <div class="form-group no-display">
+                                        <input type="text" name="filename" value="<?php echo ($key) ?>">
+                                    </div>
+
+                                    <div class="form-group no-padding">
+                                        <input type="text" name="version" required="required" value="<?php echo($value['version']) ?>">
+                                    </div>
+
+                                    <button type="submit" class="btn btn-danger">OK</button>
+                                    <button type="button" class="btn btn-default" onclick="onHideEdit('<?php echo ($id) ?>')">Cancel</button>
+
+                                <?= Form::close() ?>
+
+                            </div>
+                        </th>
+                    </tr>
+                    <?php $id++; ?>
+                    <?php endforeach ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <h4>Upload new file</h4>
+            <div>
+                
+                <?= Form::open([ 'url' => '/versioncontroller/upload', 'files' => true ]) ?>
+
+                    <div class="form-group" data-control="fileupload">
+                        <label for="file">Select file:</label>
+                        <input type="file" id="file" name="file" accept=".dlc, .apk" required="required">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="version">Version:</label>
+                        <input type="text" id="version" name="version" required="required" value="1.0.0">
+                    </div>
+
+                    <button type="submit" class="btn btn-default">Upload</button>
+
+                <?= Form::close() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function onDeleteFile(name) {
+        window.location.href = '/versioncontroller/delete?name=' + name;
+    }
+
+    function copyRefToClipboard(name) {
+        let temp = $("<input>");
+        let ref = `${window.location.host}/download_file?name=${name}`;
+
+        $('body').append(temp);
+        temp.val(ref).select();
+        document.execCommand("copy");
+        temp.remove();
+
+        $.oc.flashMsg({
+            'text': 'URL copied to clipboard!',
+            'class': 'success',
+            'interval': 3
+        });
+    }
+
+    // toggle
+    function onShowEdit(id) {
+        $(`#edit-${id}`).removeClass('no-display');
+    }
+
+    function onHideEdit(id) {
+        $(`#edit-${id}`).addClass('no-display');
+    }
+
+</script>

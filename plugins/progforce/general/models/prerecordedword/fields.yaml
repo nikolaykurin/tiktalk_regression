@@ -1,0 +1,12 @@
+fields:
+    id:
+        label: 'progforce.general::lang.prerecordedwords.id'
+        span: auto
+        hidden: true
+        type: text
+    asset_id:
+        label: progforce.general::lang.prerecordedwords.asset_id
+        type: number
+    text:
+        label: progforce.general::lang.prerecordedwords.text
+        type: text

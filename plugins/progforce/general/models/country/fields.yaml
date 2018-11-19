@@ -1,0 +1,16 @@
+fields:
+
+    id:
+        label:
+        type: number
+        hidden: true
+    code:
+        label: progforce.general::lang.countries.code
+        type: number
+        span: auto
+        required: true
+    description:
+        label: progforce.general::lang.countries.description
+        type: text
+        span: auto
+        required: true

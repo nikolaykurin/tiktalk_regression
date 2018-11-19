@@ -1,0 +1,59 @@
+{% set isDraggable = not(phaseId == 1 and rowNum == 1) %}
+{% set rowDraggable = isDraggable ? 'row-draggable' : 'row-not-draggable' %}
+
+<div id="phase{{id}}" class="row tbl-row {{rowDraggable}}" data-id="{{id}}" data-row-num="{{rowNum}}">
+
+    <div class="col-4 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+        {% if isDraggable %}
+            <a class="btn-drag">
+               <span class="icon icon-drag"></span>
+            </a>
+        {% endif %}
+        <div class="pnl-select-phase">
+            {% set disabled = isDraggable ? '' : 'disabled' %}
+            <select
+                class="custom-select form-control mr-sm-2 phase-val select-phase"
+                data-id="{{phaseId}}"
+                {{ disabled }}
+            >
+                <option value="0">Please select treatment phase</option>
+                {% for phase in phases %}
+                    {% set optionSelected = phaseId == phase.id ? 'selected' : '' %}
+                    <option value="{{ phase.id }}"
+                        {{ optionSelected }}
+                    >
+                        {{ phase.description }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div class="col-4 col-sm-4 col-md-4 col-lg-5 col-xl-5">
+        <select
+            class="custom-select form-control mr-sm-2 phase-val select-status"
+            data-id="{{statusId}}"
+        >
+            <option value="0">Please select phase status</option>
+            {% for status in statuses %}
+                {% set optionSelected = statusId == status.id ? 'selected' : '' %}
+                <option value="{{ status.id }}"
+                    {{ optionSelected }}
+                >
+                    {{ status.description }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="col-4 col-sm-3 col-md-3 col-lg-2 col-xl-2">
+        <span class="phase-status-date">
+            {{statusDate}}
+        </span>
+        {% if isDraggable %}
+            <a class="btn-remove-phase float-right">
+               <span class="icon icon-delete-white"></span>
+            </a>
+        {% endif %}
+    </div>
+</div>

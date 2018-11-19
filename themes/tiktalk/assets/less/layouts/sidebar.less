@@ -1,0 +1,58 @@
+.left-sidebar {
+    .gradient;
+    border: none;
+    overflow: initial;
+    top: 0;
+    width: @sidebar-width;
+    z-index: @z-index-sidebar;
+    .dropdown-divider {
+        margin: 20px 0;
+    }
+    .nav-pills {
+        margin-top: @header-height;
+    }
+    .nav-item {
+        padding: 10px 0;
+        position: relative;
+        .nav-link {
+            border-left: 3px solid transparent;
+            color: #fff;
+            font-size: 12px;
+            line-height: 16px;
+            min-height: 70px;
+            overflow: hidden;
+            padding: 5px 10px;
+            text-align: center;
+            &.active {
+                background-color: transparent;
+                border-left: 3px solid #fff;
+                &:before {
+                    border-bottom: 8px solid transparent;
+                    border-left: 8px solid #0fbb9b;
+                    border-top: 8px solid transparent;
+                    bottom: 45%;
+                    content: "";
+                    left: 100%;
+                    position: absolute;
+                }
+            }
+            .icon {
+                display: block;
+                height: 25px;
+                margin: 0 auto 5px;
+                &.icon-patient {
+                    .icon-bg('../images/icons/patient.png', '../images/icons/patient-hover.png');
+                }
+                &.icon-plans {
+                    .icon-bg('../images/icons/plans.png', '../images/icons/plans-hover.png');
+                }
+                &.icon-reports {
+                    .icon-bg('../images/icons/reports.png', '../images/icons/reports-hover.png');
+                }
+                &.icon-back {
+                    background: url('../images/icons/back.png') no-repeat center center;
+                }
+            }
+        }
+    }
+}

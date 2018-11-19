@@ -1,0 +1,7 @@
+fields:
+    function:
+        label: Function
+        span: auto
+        oc.commentPosition: ''
+        required: 1
+        type: text

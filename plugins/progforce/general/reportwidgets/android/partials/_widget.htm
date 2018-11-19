@@ -1,0 +1,126 @@
+<div class="report-widget">
+    <h3>Android</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Speechanalyzer</h3>
+            <div>
+                <h4>APK Upload</h4>
+                <div class="form-inline">
+                    <div class="form-group" data-control="fileupload">
+                        <input type="file" id="speechanalyzer-file" accept=".apk">
+                    </div>
+                    <button class="btn btn-default" type="button" onclick="uploadFile('speechanalyzer')">
+                        Upload
+                    </button>
+                </div>
+            </div>
+            <br>
+            <div>
+                <h4>APK Download</h4>
+                <a
+                    id="download-speechanalyzer"
+                    href="/download_apk"
+                    class="
+                        btn
+                        btn-default
+                        <?= $has_speechanalyzer ? '' : 'disabled' ?>
+                    "
+                >
+                    Download
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3>Game</h3>
+            <div>
+                <h4>APK Upload</h4>
+                <div class="form-inline">
+                    <div class="form-group" data-control="fileupload">
+                        <input type="file" id="game-file" accept=".apk">
+                    </div>
+                    <button class="btn btn-default" type="button" onclick="uploadFile('game')">
+                        Upload
+                    </button>
+                </div>
+            </div>
+            <br>
+            <div>
+                <h4>APK Download</h4>
+                <a
+                    id="download-game"
+                    href="/download_game"
+                    class="
+                        btn
+                        btn-default
+                        <?= $has_game ? '' : 'disabled' ?>
+                    "
+                >
+                    Download
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function uploadFile(type) {
+        let input;
+        let url;
+
+        switch (type) {
+            case 'speechanalyzer':
+                url = '/upload_apk';
+                input = $('#speechanalyzer-file');
+                break;
+            case 'game':
+                url = '/upload_game';
+                input = $('#game-file');
+                break;
+            default:
+                errorOccuredMessage('Wrong \'type\' parameter');
+                break;
+        }
+
+        let file = input.prop('files')[0];
+        if (file === undefined) {
+            errorOccuredMessage('Select file');
+            return;
+        }
+
+        let formData = new FormData;
+        formData.append('apk', file);
+
+        $.ajax({
+            url: url,
+            data: formData,
+            processData: false,
+            contentType: false,
+            type: 'POST',
+            success: function (data) {
+                $('#download-' + type).removeClass('disabled');
+                successMessage();
+            },
+            error: function (data) {
+                errorOccuredMessage(data.responseText);
+            }
+        });
+    }
+
+    function errorOccuredMessage(message = null) {
+        $.oc.flashMsg({
+            'text': message !== null ? message : 'An error occured...',
+            'class': 'error',
+            'interval': 3
+        });
+    }
+
+    function successMessage(message = null) {
+        $.oc.flashMsg({
+            'text': message !== null ? message : 'Success!',
+            'class': 'success',
+            'interval': 3
+        });
+    }
+
+</script>

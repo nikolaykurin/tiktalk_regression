@@ -1,0 +1,8 @@
+columns:
+    asset_id:
+        label: 'progforce.general::lang.prerecordedwords.import_export.asset_id'
+    text:
+        label: 'progforce.general::lang.prerecordedwords.import_export.text'
+column_names:
+    asset_id:
+    text:

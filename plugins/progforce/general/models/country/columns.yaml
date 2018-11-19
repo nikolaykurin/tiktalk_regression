@@ -1,0 +1,16 @@
+columns:
+    id:
+        label: progforce.general::lang.countries.id
+        type: number
+        sortable: true
+        searchable: true
+    code:
+        label: progforce.general::lang.countries.code
+        type: number
+        sortable: true
+        searchable: true
+    description:
+        label: progforce.general::lang.countries.description
+        type: text
+        sortable: true
+        searchable: true

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: White Label
+
+# Model Form Field configuration
+form: $/progforce/general/models/whitelabel/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\WhiteLabel
+
+# Default redirect location
+defaultRedirect: progforce/general/whitelabels
+
+# Create page
+create:
+    title: Create White Label
+    redirect: progforce/general/whitelabels/update/:id
+    redirectClose: progforce/general/whitelabels
+
+# Update page
+update:
+    title: Edit White Label
+    redirect: progforce/general/whitelabels
+    redirectClose: progforce/general/whitelabels
+
+# Preview page
+preview:
+    title: Preview White Label

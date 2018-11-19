@@ -1,0 +1,69 @@
+<div class="pnl-slp-content">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-5">
+            <div class="pnl-info">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="pnl-profile">
+                            <img 
+                                class="slp-avatar rounded-circle" 
+                                src="{{ user.avatar ? user.avatar.path : 'assets/images/slp-def-avatar.png'|theme }}"
+                            >
+                            <div class="name-row">
+                                <div class="name">
+                                    {{ user.first_name }} {{ user.last_name }}
+                                </div>
+                                <div class="name-info">
+                                    SLP'S Profile
+                                </div>
+                            </div>
+                            <div class="pnl-header">
+                                Therapy Languages
+                            </div>
+                            {% for lang in user.getLanguagesList() %}
+                                <div class="col-text">{{ lang.language }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                            <div class="pnl-control">
+                            <a href="/clinician/patients">
+                                <button id="btnBack"  class="btn-gradient">
+                                    Back
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-7">
+
+            {% partial 'content-header' header='My Patients' %}
+
+            <div class="tbl">
+                <div class="tbl-head">
+                    <div class="row tbl-row" >
+                        <div class="col-2">Code</div>
+                        <div class="col-5">Name</div>
+                        <div class="col-2">Age</div>
+                        <div class="col-3">Language</div>
+                    </div>
+                </div>
+                <div id="tblPlansBody" class="tbl-body">
+                    {% for patient in user.patients %}
+                        <div class="row tbl-row">
+                            <div class="col-2">{{ patient.id }}</div>
+                            <div class="col-5">{{ patient.first_name }} {{ patient.last_name }}</div>
+                            <div class="col-2">{{ patient.age }}</div>
+                            <div class="col-3">{{ patient.language.language }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Country
+
+# Model Form Field configuration
+form: $/progforce/general/models/country/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\Country
+
+# Default redirect location
+defaultRedirect: progforce/general/countries
+
+# Create page
+create:
+    title: Create Country
+    redirect: progforce/general/countries/update/:id
+    redirectClose: progforce/general/countries
+
+# Update page
+update:
+    title: Edit Country
+    redirect: progforce/general/countries
+    redirectClose: progforce/general/countries
+
+# Preview page
+preview:
+    title: Preview Country

@@ -1,0 +1,19 @@
+fields:
+    issue_id:
+        label: 'Issue ID'
+        oc.commentPosition: ''
+        span: left
+        required: 1
+        type: number
+    message:
+        label: Message
+        oc.commentPosition: ''
+        span: left
+        required: 1
+        type: text
+    description:
+        label: Description
+        size: small
+        oc.commentPosition: ''
+        span: left
+        type: textarea

@@ -1,0 +1,37 @@
+<div id="panelPatient" class="pnl-patient-content" data-patient-id="{{ patient.id }}">
+    <div class="patient-header">
+        <img
+            class="patient-avatar rounded-circle"
+            src="{{ patient.avatar ? patient.avatar.path : 'assets/images/patient-def-avatar.png'|theme }}"
+        />
+        <span>
+        {{ patient.first_name }} {{ patient.last_name }}
+        </span>
+    </div>
+    {# INFO TAB #}
+    <div id="partialTabInfo">
+        {% partial '@tab-info' %}
+    </div>
+
+    {# PLANS TAB #}
+    {% partial '@tab-plans' %}
+
+    {# REPORTS TAB #}
+    <div id="partialTabReports">
+        {% partial '@tab-reports' %}
+    </div>
+</div>
+
+{# Dynamic partial - call occurs on server side render partial #}
+<div id="partialModifyPatient">
+</div>
+
+{% put styles %}
+
+    <style>
+        .display-none {
+            display: none;
+        }
+    </style>
+
+{% endput %}

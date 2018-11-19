@@ -1,0 +1,59 @@
+<div id="tabPatientPlansList" class="tab-plan">
+    <div class="pnl-content-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <h5>Treatment plans</h5>
+            </div>
+            <div class="col-sm-6">
+                <button
+                    id="btnAddPlan"
+                    type="button"
+                    class="btn-gradient float-right"
+                >
+                    Add Sound
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="tblPlans" class="tbl">
+
+        <div class="tbl-head">
+            <div class="row tbl-row" >
+                <div class="col-sm-3">Sequence</div>
+                <div class="col-sm-3">Sound</div>
+                <div class="col-sm-4">Status</div>
+                <div class="col-sm-2 td-actions ">Actions</div>
+            </div>
+        </div>
+
+        <div id="tblPlansBody" class="tbl-body">
+            {% for plan in plans %}
+                <div id="plan{{plan.id}}" class="row tbl-row" data-id="{{plan.id}}">
+                    <div class="col-sm-3 td-sequence ">
+                        <span class="btn-drag">
+                            <span class="icon icon-drag"></span>
+                        </span>
+                        <span class="seq">
+                            {{ plan.protocol_sequence }}
+                        </span>
+                    </div>
+                    <div class="col-sm-3">{{ plan.sound.sound }}</div>
+                    <div class="col-sm-4 td-protocol">{{ plan.protocol_status_field.description }}</div>
+
+                    <div class="col-sm-2 td-actions">
+                        <span class="btn-edit-plan">
+                            <span class="icon icon-edit"></span>
+                        </span>
+                        <span class="btn-remove-plan">
+                            <span class="icon icon-delete"></span>
+                        </span>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div id="partialSlpLogsStatic">
+        {% partial 'patient/slp-logs-static' %}
+    </div>
+</div>

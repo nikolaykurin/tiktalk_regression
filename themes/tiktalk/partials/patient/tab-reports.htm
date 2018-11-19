@@ -1,0 +1,11 @@
+<div id="tabPatientReports" data-path="{{reports.path}}" class="tab-patient tab-report">
+    <div id="partialPatientProgress">
+        {% partial 'patient/tab-reports-patient-progress' %}
+    </div>
+
+    {% partial 'content-header' header='Caller Recordings' %}
+    {% partial 'patient/tab-reports-filter' %}
+    <div id="partialTabReportsTabs">
+        {% partial 'patient/tab-reports-tabs' %}
+    </div>
+</div>

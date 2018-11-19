@@ -1,0 +1,4 @@
+import:
+    title: Import
+    modelClass: Progforce\General\Models\PrerecordedWordsImport
+    list: $/progforce/general/models/prerecordedword/columns_for_import.yaml

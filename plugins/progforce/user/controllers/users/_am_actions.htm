@@ -1,0 +1,16 @@
+<div class="loading-indicator-container">
+    <?php if ($model->hasModel()) : ?>
+        <a  download
+            href="/download_am?user_id=<?= $model->id ?>"
+            class="btn btn-primary"
+            data-stripe-load-indicator
+        ><?= e(trans('progforce.user::lang.user.download_btn')) ?></a>
+        <a
+            href="/delete_am?user_id=<?= $model->id ?>"
+            class="btn btn-danger"
+            data-request-confirm="Are you sure?"
+        ><?= e(trans('progforce.user::lang.user.delete_am_btn')) ?></a>
+    <?php else : ?>
+        <b><span class="text-danger"><?= e(trans('progforce.user::lang.user.no_model')) ?></span></b>
+    <?php endif ?>
+</div>

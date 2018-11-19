@@ -1,0 +1,17 @@
+columns:
+    id:
+        label: progforce.general::lang.languageconfigurations.id
+        type: number
+        sortable: true
+        searchable: true
+    language:
+        label: progforce.general::lang.languageconfigurations.language
+        type: text
+        sortable: true
+        searchable: true
+    path_to_images:
+        label: progforce.general::lang.languageconfigurations.path_to_images
+        type: text
+    path_to_recordings:
+        label: progforce.general::lang.languageconfigurations.path_to_recordings
+        type: text

@@ -1,0 +1,52 @@
+<div class="pnl-info pnl-phases" {{ sound ? '' : 'hiddden="hidden"' }}>
+
+    <div id="tblPhases" class="tbl">
+        <div id="tblPhasesBody">
+
+            {% for planPhase in planPhases %}
+                {% partial '@list-phase-row'
+                    id=planPhase.id
+                    rowNum=loop.index
+                    phaseId=planPhase.phase_id
+                    statusId=planPhase.phase_status_id
+                    statusDate=planPhase.phase_status_date
+                %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <button
+                id="btnAddPhase"
+                type="button"
+                class="btn-round-white"
+            >
+                Add Phase +
+            </button>
+        </div>
+    </div>
+
+</div>
+
+<div class="control">
+    <button
+        id="btnSlpLogs"
+        class="btn-gradient"
+    >
+        Logs
+    </button>
+    <button
+        id="btnBackPhases"
+        class="btn-gradient"
+        data-toggle="modal"
+        data-target="#modal1"
+    >
+        Back
+    </button>
+</div>
+
+{# Slp Logs Modal #}
+<div id="partialSlpLogsModal">
+
+</div>

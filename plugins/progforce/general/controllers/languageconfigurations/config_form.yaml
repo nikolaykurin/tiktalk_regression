@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Language Configuration
+
+# Model Form Field configuration
+form: $/progforce/general/models/languageconfiguration/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\LanguageConfiguration
+
+# Default redirect location
+defaultRedirect: progforce/general/languageconfigurations
+
+# Create page
+create:
+    title: Create Language Configuration
+    redirect: progforce/general/languageconfigurations/update/:id
+    redirectClose: progforce/general/languageconfigurations
+
+# Update page
+update:
+    title: Edit Language Configuration
+    redirect: progforce/general/languageconfigurations
+    redirectClose: progforce/general/languageconfigurations
+
+# Preview page
+preview:
+    title: Preview Language Configuration

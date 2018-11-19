@@ -1,0 +1,127 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Create tables'
+    - builder_table_create_progforce_general_patient_profiles.php
+    - builder_table_create_progforce_general_slp_profiles.php
+    - builder_table_create_progforce_general_patient_treatment_plans.php
+    - builder_table_create_progforce_general_treatment_phases.php
+    - builder_table_create_progforce_general_treatment_statuses.php
+    - builder_table_create_progforce_general_countries.php
+    - builder_table_create_progforce_general_complexities.php
+    - builder_table_create_progforce_general_parts_of_speech.php
+    - builder_table_create_progforce_general_words.php
+    - builder_table_create_progforce_general_language_configurations.php
+    - builder_table_create_progforce_general_user_words.php
+1.0.3:
+    - 'Updated table progforce_general_words'
+    - builder_table_update_progforce_general_words.php
+1.0.9:
+    - 'Create table progforce_general_words_he_il'
+    - builder_table_create_progforce_general_words_he_il.php
+1.0.10:
+    - 'Updated table progforce_general_slp_profiles'
+    - builder_table_update_progforce_general_slp_profiles.php
+1.0.11:
+    - 'Updated table progforce_general_treatment_phases'
+    - builder_table_update_progforce_general_treatment_phases.php
+1.0.12:
+    - 'Created table progforce_general_game_modes'
+    - builder_table_create_progforce_general_game_modes.php
+1.0.13:
+    - 'Updated table progforce_general_parts_of_speech'
+    - builder_table_update_progforce_general_location_within_word_aux.php
+1.0.14:
+    - 'Created table progforce_general_part_of_speech_aux'
+    - builder_table_create_progforce_general_part_of_speech_aux.php
+1.0.15:
+    - 'Created table progforce_general_function_within_phoneme'
+    - builder_table_create_progforce_general_function_within_phoneme.php
+1.0.19:
+    - 'Updated table progforce_general_words_he_il'
+    - builder_table_update_progforce_general_words_he_il.php
+1.0.20:
+    - 'Updated table progforce_general_language_configurations'
+    - builder_table_update_progforce_general_language_configurations.php
+1.0.21:
+    - 'Updated table progforce_general_language_configurations'
+    - builder_table_update_progforce_general_language_configurations_2.php
+1.0.30:
+    - 'Created table progforce_general_issue_codes'
+    - builder_table_create_progforce_general_issue_codes.php
+1.0.31:
+    - 'Created table progforce_general_prerecorded_words'
+    - builder_table_create_progforce_general_prerecorded_words.php
+1.0.32:
+    - 'Created table progforce_general_registered_devices'
+    - builder_table_create_progforce_general_registered_devices.php
+1.0.33:
+    - 'Created table progforce_general_logs'
+    - builder_table_create_progforce_general_logs.php
+1.0.34:
+    - 'Created table progforce_general_scoring_algorithms'
+    - builder_table_create_progforce_general_scoring_algorithms.php
+1.0.35:
+    - 'Dropped table progforce_general_slp_profiles'
+    - builder_table_drop_progforce_general_slp_profiles.php
+1.0.36:
+    - Add new table progforce_general_treatment_plans_phases
+    - create_progforce_general_treatment_plans_phases_table.php
+1.0.37:
+    - Create Sounds Table for all languages
+    - create_progforce_general_treatment_sounds_table.php
+1.0.38:
+    - 'Add words_count column to sounds table'
+    -  add_words_count_col_to_progforce_general_treatment_sounds.php
+1.0.39:
+    - 'Add server_id column to devices table'
+    -  add_server_id_col_to_progforce_general_registered_devices_table.php
+1.0.40:
+    - 'Add language_id column to scoring algorithms table'
+    -  add_language_id_col_to_progforce_general_scoring_algorithms_table.php
+1.0.41:
+    - 'Words tables refactoring'
+    -  refactoring_progforce_general_words_tables.php
+1.0.42:
+    - 'Sounds refactoring'
+    -  refactoring_progforce_general_sounds.php
+1.0.43:
+    - 'Sounds refactoring-2'
+    -  refactoring_progforce_general_sounds_2.php
+1.0.44:
+    - Create SLP logs table
+    - create_progforce_general_slp_logs_table.php
+1.0.45:
+    - Create Reports table
+    - create_progforce_general_reports_table.php
+1.0.46:
+    - Add is_white_label Column
+    - add_is_white_label_col_to_progforce_general_registered_devices_table.php
+1.0.47:
+    - Create White Labels Table
+    - create_progforce_general_white_labels_table.php
+    - Add white_label_id Column
+    - add_white_label_id_col_to_progforce_general_registered_devices_table.php
+1.0.48:
+    - Create Utterance table, add SoundOccurrences, UtteranceType fields
+    - create_utterance_types_table.php
+    - add_utterance_type_id_col_to_words_table.php
+    - seed_utterance_types_table.php
+1.0.49:
+    - Refactoring Add Has Image
+    - refactoring_progforce_general_words_tables_2.php
+1.0.50:
+    - Change col transcription1 Length
+    - change_words_transcription1_col_length.php
+1.0.51:
+    - 'Add IDs Columns to devices table'
+    - add_ids_cols_to_progforce_general_registered_devices_table.php
+1.0.52:
+    - 'Add Mixed ID Column to devices table'
+    - add_mixed_id_col_to_progforce_general_registered_devices_table.php
+1.0.53:
+    - 'Add active_version column to devices table'
+    - add_active_version_col_to_progforce_general_registered_devices_table.php
+1.0.54:
+    - 'Create Results table'
+    - create_results_table.php

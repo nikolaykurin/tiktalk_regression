@@ -1,0 +1,11 @@
+fields:
+
+    id:
+        label: progforce.general::lang.complexities.id
+        type: number
+        hidden: true
+    description:
+        label: progforce.general::lang.complexities.description
+        type: text
+        span: auto
+        required: true

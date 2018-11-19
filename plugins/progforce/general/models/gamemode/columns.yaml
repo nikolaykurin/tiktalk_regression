@@ -1,0 +1,11 @@
+columns:
+    id:
+        label: 'progforce.general::lang.languageconfigurations.id'
+        type: number
+        sortable: true
+        searchable: true
+    description:
+        label: 'progforce.general::lang.complexities.description'
+        type: text
+        searchable: true
+        sortable: true

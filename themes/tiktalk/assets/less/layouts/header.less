@@ -1,0 +1,80 @@
+.main-header {
+    background-color: #fff;
+    height: @header-height;
+    padding: 0;
+    z-index: @z-index-header;
+    .navbar-brand {
+        .font(lato, 14px);
+        color: @text-color;
+        &:hover, &:focus {
+            color: @text-color;
+        }
+        > img {
+            height: 35px;
+            margin: 0 20px;
+        }
+    }
+    .user-menu {
+        height: 100%;
+        .dropdown-toggle {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            height: 100%;
+            line-height: @header-height;
+            margin-right: 20px;
+            min-width: 200px;
+            padding: 0;
+            position: relative;
+            &:hover, &:focus {
+                outline: none;
+            }
+            &:after {
+                border-top: 0.3em solid #0fbb9b;
+                position: absolute;
+                right: 0;
+                top: 46%;
+            }
+            > img {
+                float: left;
+                height: 100%;
+            }
+            .user-name {
+                .font(lato, 14px);
+                .gradient;
+                -webkit-background-clip: text;
+                color: transparent;
+                float: left;
+                font-weight: bold;
+                margin: 0 20px;
+                padding-right: 10px;
+            }
+        }
+        .dropdown-menu {
+            border: none;
+            border-radius: 0;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+            left: auto;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            > a {
+                color: @text-color;
+                padding: 15px 20px;
+                &:hover, &:focus {
+                    background-color: #f8f8f8;
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+    .main-header .user-menu .dropdown-toggle {
+        min-width: auto;
+        &:after {
+            position: inherit;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+<div class="report-widget">
+    <h3>Assets Parser</h3>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/generate_dictionaries" class="btn btn-success">
+                Parse
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a
+                    href="/get_lang_file?lang=en"
+                    download
+                    class="
+                    btn
+                    btn-default
+                    <?= $has_he ? '' : 'disabled' ?>
+                "
+            >
+                Download EN Lang File
+            </a>
+            <br>
+            <br>
+            <a
+                    href="/get_lang_file?lang=he"
+                    download
+                    class="
+                    btn
+                    btn-default
+                    <?= $has_he ? '' : 'disabled' ?>
+                "
+            >
+                Download HE Lang File
+            </a>
+        </div>
+    </div>
+</div>

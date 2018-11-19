@@ -1,0 +1,23 @@
+.main-div {
+    padding: 0 5px 20px 5px;
+    overflow: visible;
+    min-height: 50px;
+}
+
+#waiting {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
+}
+
+.table-wrap {
+    padding: 20px;
+}

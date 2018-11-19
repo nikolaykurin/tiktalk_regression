@@ -1,0 +1,24 @@
+{% if not user %}
+
+    <div class="text-center">
+        <img class="login-logo" src="{{ 'assets/images/logo-tiktalk.png'|theme }}"/>
+        <p class="login-slogan">Professional assistant for speech therapists</p>
+    </div>
+    <div class="jumbotron login-box">
+        <div class="form-login m-auto">
+            <div class="popup-title">Welcome back!</div>
+
+            {% partial __SELF__ ~ '::signin' %}
+
+        </div>
+    </div>
+
+{% else %}
+
+    {% partial __SELF__ ~ '::activation_check' %}
+
+    {% partial __SELF__ ~ '::update' %}
+
+    {% partial __SELF__ ~ '::deactivate_link' %}
+
+{% endif %}

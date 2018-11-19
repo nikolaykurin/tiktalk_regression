@@ -1,0 +1,34 @@
+fields:
+
+    code:
+        label: progforce.user::lang.user.code
+        type: number
+        span: auto
+        disabled: true
+    first_name:
+        label: progforce.user::lang.user.first_name
+        type: text
+        span: auto
+        disabled: true
+    age:
+        label: progforce.user::lang.user.age
+        type: number
+        span: auto
+        disabled: true
+    country:
+        label: progforce.user::lang.user.country
+        type: relation
+        select: description
+        span: auto
+        disabled: true
+    language:
+        label: progforce.user::lang.user.language
+        type: relation
+        select: language
+        span: auto
+        disabled: true
+    developer_mode:
+        label: progforce.user::lang.user.developer_mode
+        type: switch
+        span: auto
+        disabled: true

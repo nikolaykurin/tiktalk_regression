@@ -1,0 +1,11 @@
+columns:
+    id:
+        label: progforce.general::lang.partsofspeech.id
+        type: number
+        sortable: true
+        searchable: true
+    description:
+        label: progforce.general::lang.partsofspeech.description
+        type: text
+        sortable: true
+        searchable: true

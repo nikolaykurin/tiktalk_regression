@@ -1,0 +1,77 @@
+<div data-control="toolbar">
+    <a
+        href="<?= Backend::url('progforce/general/words/create') ?>"
+        class="btn btn-primary oc-icon-plus"
+    >
+        New Word en_us
+    </a>
+
+    <button
+        class="btn btn-danger oc-icon-trash-o"
+        disabled="disabled"
+        onclick="$(this).data('request-data', { checked: $('.control-list').listWidget('getChecked') })"
+        data-request="onDelete"
+        data-request-confirm="Are you sure you want to delete the selected Words?"
+        data-trigger-action="enable"
+        data-trigger=".control-list input[type=checkbox]"
+        data-trigger-condition="checked"
+        data-request-success="$(this).prop('disabled', 'disabled')"
+        data-stripe-load-indicator
+    >
+        Delete selected
+    </button>
+
+    <button
+        class="btn btn-info oc-icon-arrow-circle-down"
+        data-request="onImport"
+        data-request-confirm="Are you sure?"
+        data-attach-loading
+    >
+        Import
+    </button>
+
+    <button
+        class="btn btn-info oc-icon-arrow-circle-up"
+        data-request="onGetFileEn"
+        data-attach-loading
+    >
+        Export
+    </button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="wordModal" role="dialog">
+    <div class="modal-dialog" style="font-size: 12px;">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 id="wordTitle" class="modal-title">Word</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input class="form-control" id="id" type="hidden" value="">
+                </div>
+                <div class="form-group">
+                    <img id="wordImg" src=""  />
+                    <i id="wordImgEmpty" class="icon-file-image-o icon-5x" style="display:none;"></i>
+                </div>
+
+                <div>
+                    <audio id="wordAudio" controls>
+                        <source src="" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

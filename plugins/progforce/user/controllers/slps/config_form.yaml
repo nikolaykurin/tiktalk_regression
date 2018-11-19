@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: S L P
+
+# Model Form Field configuration
+form: $/progforce/user/models/slp/fields.yaml
+
+# Model Class name
+modelClass: Progforce\User\Models\SLP
+
+# Default redirect location
+defaultRedirect: progforce/user/slps
+
+# Create page
+create:
+    title: Create S L P
+    redirect: progforce/user/slps/update/:id
+    redirectClose: progforce/user/slps
+
+# Update page
+update:
+    title: Edit S L P
+    redirect: progforce/user/slps/update/:id
+    redirectClose: progforce/user/slps
+
+# Preview page
+preview:
+    title: Preview S L P

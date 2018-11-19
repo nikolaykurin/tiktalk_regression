@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Utterance Type
+
+# Model Form Field configuration
+form: $/progforce/general/models/utterancetype/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\UtteranceType
+
+# Default redirect location
+defaultRedirect: progforce/general/utterancetypes
+
+# Create page
+create:
+    title: Create Utterance Type
+    redirect: progforce/general/utterancetypes/update/:id
+    redirectClose: progforce/general/utterancetypes
+
+# Update page
+update:
+    title: Edit Utterance Type
+    redirect: progforce/general/utterancetypes
+    redirectClose: progforce/general/utterancetypes
+
+# Preview page
+preview:
+    title: Preview Utterance Type

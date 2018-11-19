@@ -1,0 +1,10 @@
+name: FunctionsWithinPhoneme
+form: $/progforce/general/models/functionwithinphoneme/fields.yaml
+modelClass: Progforce\General\Models\FunctionWithinPhoneme
+defaultRedirect: progforce/general/functionswithinphoneme
+create:
+    redirect: 'progforce/general/functionswithinphoneme/update/:id'
+    redirectClose: progforce/general/functionswithinphoneme
+update:
+    redirect: progforce/general/functionswithinphoneme
+    redirectClose: progforce/general/functionswithinphoneme

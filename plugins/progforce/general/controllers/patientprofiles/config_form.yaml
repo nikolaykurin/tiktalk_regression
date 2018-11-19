@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Patient Profile
+
+# Model Form Field configuration
+form: $/progforce/general/models/patientprofile/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\PatientProfile
+
+# Default redirect location
+defaultRedirect: progforce/general/patientprofiles
+
+# Create page
+create:
+    title: Create Patient Profile
+    redirect: progforce/general/patientprofiles/update/:id
+    redirectClose: progforce/general/patientprofiles
+
+# Update page
+update:
+    title: Edit Patient Profile
+    redirect: progforce/general/patientprofiles
+    redirectClose: progforce/general/patientprofiles
+
+# Preview page
+preview:
+    title: Preview Patient Profile

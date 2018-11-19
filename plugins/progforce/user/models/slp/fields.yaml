@@ -1,0 +1,66 @@
+fields:
+    first_name:
+        label: 'First name'
+        oc.commentPosition: ''
+        span: left
+        required: 1
+        type: text
+    last_name:
+        label: 'Last name'
+        oc.commentPosition: ''
+        span: right
+        required: 1
+        type: text
+    user_name:
+        label: 'User name'
+        oc.commentPosition: ''
+        span: left
+        required: 1
+        type: text
+    password:
+        label: Password
+        oc.commentPosition: ''
+        span: right
+        required: 1
+        type: password
+    gender:
+        label: Gender
+        oc.commentPosition: ''
+        options:
+            1: Male
+            2: Female
+        span: left
+        required: 1
+        type: radio
+    languages:
+        label: 'Therapy language'
+        span: right
+        required: 1
+        type: checkboxlist
+    address:
+        label: Address
+        size: small
+        oc.commentPosition: ''
+        span: full
+        type: textarea
+    avatar:
+        label: Avatar
+        type: fileupload
+        commentAbove: Single image upload inside a tab.
+        mode: image
+        imageHeight: 150
+        imageWidth: 150
+        oc.commentPosition: ''
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+
+tabs:
+    fields:
+        patients:
+            label: Patients
+            commentAbove: List of patients of current SLP.
+            type: partial
+            tab: Patients

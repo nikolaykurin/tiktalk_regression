@@ -1,0 +1,62 @@
+<div id="accordion">
+    {% for folderName,records in reports.records %}
+        {% set wordIndex = loop.index %}
+        <div class="card">
+            <div class="card-header" id="heading{{loop.index}}">
+                <h5 class="mb-0">
+                    <button
+                        class="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#collapse{{loop.index}}"
+                        aria-expanded="true"
+                        aria-controls="collapse{{loop.index}}"
+                    >
+                        <div>{{folderName}}</div> 
+                    </button>
+                </h5>
+            </div>
+            <div id="collapse{{loop.index}}" class="collapse" aria-labelledby="heading{{loop.index}}" data-parent="#accordion">
+                <div class="card-body">
+                    {% for record in records %}
+                        {% set filePath = reports.path ~ '/' ~ folderName ~ '/' ~ record.file %}
+                        <div class="row patient-file-row">
+                            <div class="col-12">
+                                <div class="img-word float-left">
+                                    <img src="{{ reports.words[record.wordId].imagePath }}" />
+                                </div>
+                                <div>
+                                    <div>
+                                        {{reports.words[record.wordId].word}}
+                                    </div>
+                                    {% if record.resultId %}
+                                        <span class="img-result">
+                                            {% set iconPath =  'assets/images/icons/result' ~-record.resultId ~ '.png' %}
+                                            <img src="{{ iconPath|theme }}" />
+                                        </span> 
+                                    {% endif %}
+                                    <span>
+                                        {{ record.game }}
+                                    </span>
+                                    <span>
+                                        {% set fileExt = record.file|split('.') %}
+                                        {{ fileExt[0] }}. 
+                                    </span>
+                                    <span>
+                                        ({{record.fileDate}})
+                                    </span>
+                                </div>
+                                <div>
+                                    <audio id="audio-{{wordIndex}}-{{loop.index}}" controls>
+                                        <source src="{{filePath}}" type="audio/wav">
+                                            Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

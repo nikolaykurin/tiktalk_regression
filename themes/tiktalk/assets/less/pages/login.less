@@ -1,0 +1,60 @@
+.login-page {
+    height: 100vh;
+    .container-fluid {
+        display: flex;
+        height: 100%;
+        .login-logo {
+            height: 65px;
+            text-align: center;
+        }
+        .login-slogan {
+            color: @text-color;
+            font-size: 13px;
+        }
+        .login-box {
+            margin-top: 35px;
+            padding: 30px 40px;
+            position: relative;
+            &:before {
+                border-bottom: 10px solid #fff;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                bottom: 100%;
+                content:"";
+                left: 47%;
+                position: absolute;
+            }
+            .alert {
+                max-width: 190px;
+            }
+            .form-login {
+                min-width: 200px;
+                text-align: center;
+                .popup-title {
+                    font-size: 15px;
+                    font-weight: bold;
+                    margin-bottom: 17px;
+                    text-transform: uppercase;
+                }
+                .input-username {
+                    .icon-bg('../images/icons/input-username.png', '../images/icons/input-username-focus.png', right);
+                }
+                .input-password {
+                    .icon-bg('../images/icons/input-password.png', '../images/icons/input-password-focus.png', right);
+                }
+                .btn-gradient {
+                    margin: 17px 0 10px;
+                    width: 100%;
+                }
+                .forgot-password {
+                    font-size: 13px;
+                    margin: 0;
+                    a {
+                        color: rgb(0, 170, 183);
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}

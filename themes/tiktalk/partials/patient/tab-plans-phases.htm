@@ -1,0 +1,48 @@
+<div id="tabPatientPlansPhases" class="tab-plan display-none" data-plan-id="{{ planId }}">
+
+    {% if planAdded %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        Plan was created.
+    </div>
+    {% endif %}
+
+    {% partial 'content-header' header='Modify Phases' %}
+
+    <div class="row">
+        <div class="col-sm-6">
+            <label for="planSounds" class="pnl-header">Sound</label>
+            <select
+                id="planSounds"
+                class="custom-select"
+            >
+                {% for sound in plansSounds %}
+                    {% set optionSelected = planId == sound.plan_id ? 'selected' : '' %}
+                    <option {{optionSelected}} value="{{ sound.plan_id }}">
+                        {{ sound.sound }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-6">
+            <label for="planStatus" class="pnl-header">Status</label>
+            <select
+                id="planStatuses"
+                class="custom-select"
+            >
+                {% for status in statuses %}
+                    {% set optionSelected = planStatusId == status.id ? 'selected' : '' %}
+                    <option {{optionSelected}} value="{{ status.id }}">
+                        {{ status.description }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <div id="partialPhases">
+        {% partial '@list-phases' %}
+    </div>
+</div>

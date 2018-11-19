@@ -1,0 +1,21 @@
+fields:
+    id:
+        label: progforce.general::lang.logs.id
+        disabled: true
+    user:
+        label: progforce.general::lang.logs.user
+        type: relation
+        select: first_name
+        disabled: true
+    datetime:
+        label: progforce.general::lang.logs.datetime
+        type: datepicker
+        disabled: true
+    action:
+        label: progforce.general::lang.logs.action
+        type: dropdown
+        disabled: true
+    data:
+        label: progforce.general::lang.logs.data
+        disabled: true
+        type: textarea

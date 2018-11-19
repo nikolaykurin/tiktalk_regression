@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Registered Device
+
+# Model Form Field configuration
+form: $/progforce/general/models/registereddevice/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\RegisteredDevice
+
+# Default redirect location
+defaultRedirect: progforce/general/registereddevices
+
+# Create page
+create:
+    title: Create Registered Device
+    redirect: progforce/general/registereddevices/update/:id
+    redirectClose: progforce/general/registereddevices
+
+# Update page
+update:
+    title: Edit Registered Device
+    redirect: progforce/general/registereddevices
+    redirectClose: progforce/general/registereddevices
+
+# Preview page
+preview:
+    title: Preview Registered Device

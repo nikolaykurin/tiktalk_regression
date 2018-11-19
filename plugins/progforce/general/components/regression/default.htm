@@ -1,0 +1,97 @@
+<div class="container">
+    <div>
+        Model Status: <b>{{ model_exist ? 'BUILT' : 'NOT EXIST' }}</b>
+        <br/>
+        <button id="build" type="button" class="btn btn-primary">{{ model_exist ? 'Re-Build' : 'Build' }}</button>
+    </div>
+
+    <hr/>
+
+    <div>
+        <form>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" class="form-control" id="age" value="4" step="1">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" class="form-control">
+                    {% for key, gender in gender_values %}
+                        <option value="{{ key }}">{{ gender | capitalize }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="complexity">Complexity</label>
+                <select id="complexity" class="form-control">
+                    {% for key, complexity in complexity_values %}
+                    <option value="{{ key }}">{{ complexity | capitalize }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date">Treatment Start Date</label>
+                <input id="date" class="form-control" data-provide="datepicker" data-date-format="yyyy-mm-dd">
+            </div>
+
+            <button id="predict" type="button" class="btn btn-primary">Predict</button>
+        </form>
+    </div>
+
+    <hr/>
+
+    <div>
+        Predicted Treatment End Date: <b><span id="predicted"></span></b>
+    </div>
+</div>
+
+<script src="{{ 'assets/vendor/jquery/jquery.min.js'|theme }}"></script>
+<script src="{{ 'assets/vendor/bootstrap-datepicker.js'|theme }}"></script>
+<script src="{{ 'assets/vendor/moment.min.js'|theme }}"></script>
+<script>
+
+    $(document).ready(() => {
+
+        $('#date').val(moment().format('YYYY-MM-DD'));
+
+        $('#predict').on('click', () => {
+
+            const data = new FormData();
+
+            data.set('patient_age', $('#age').val());
+            data.set('patient_gender', $('#gender').val());
+            data.set('treatment_complexity', $('#complexity').val());
+
+            $.ajax({
+                url: '/results/model/predict',
+                type: 'POST',
+                data: data,
+                contentType: false,
+                processData: false,
+                timeout: 0,
+                success: (response) => {
+                    const date = $('#date').val();
+
+                    $('#predicted').text(moment(date).add(response.result, 'days').format('YYYY-MM-DD'));
+                }
+            }).fail((jqXHR, textStatus, errorThrown) => {
+                console.log(jqXHR, textStatus, errorThrown);
+            });
+        });
+
+        $('#build').on('click', () => {
+            $.ajax({
+                url: '/results/model/build',
+                type: 'GET',
+                timeout: 0,
+                success: (response) => {
+                    location.reload();
+                }
+            }).fail((jqXHR, textStatus, errorThrown) => {
+                console.log(jqXHR, textStatus, errorThrown);
+            });
+
+        })
+    });
+
+</script>

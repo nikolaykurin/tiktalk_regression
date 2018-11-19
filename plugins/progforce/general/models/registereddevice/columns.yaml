@@ -1,0 +1,40 @@
+columns:
+    id:
+        label: progforce.general::lang.registereddevices.id
+        hidden: true
+        searchable: true
+    mixed_id:
+        label: Mixed Id
+        type: text
+        searchable: true
+    imei_id:
+        label: IMEI Id
+        type: text
+        searchable: true
+    firebase_id:
+        label: Firebase Id
+        type: text
+        searchable: true
+    android_id:
+        label: Android Id
+        type: text
+        searchable: true
+    mac_id:
+        label: Mac Id
+        type: text
+        searchable: true
+    unity_id:
+        label: Unity Id
+        type: text
+        searchable: true
+    active_version:
+        label: Active Version
+        type: text
+        searchable: true
+    server:
+        label: Device Server
+    is_white_label:
+        label: White Label Mode
+        type: switch
+    created_at:
+        label: Registration Date

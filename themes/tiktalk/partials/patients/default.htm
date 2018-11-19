@@ -1,0 +1,60 @@
+<div class="pnl-patients">
+    <input id="user_id" type="hidden" value="{{ user.id }}">
+    <div class="pnl-patients-header">
+        <div class="row">
+            <div class="col-sm-6">
+                <h5>Patients</h5>
+            </div>
+            <div class="col-sm-6">
+                <button
+                    id="btnAddPatient"
+                    type="button"
+                    class="btn-gradient float-right"
+                >
+                    Add Patient
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="search">
+        <div class="input-group mb-3 col-sm-4">
+            <input id="search-input" type="text" class="form-control border-right-0" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon1">
+            <div class="input-group-prepend bg-white">
+                <span class="input-group-text border-left-0 rounded-right bg-white" id="basic-addon"><i id="search-ico" class="fas fa-search"></i></span>
+            </div>
+        </div>
+    </div>
+    <div id="patients-table">
+        {% partial '@table' %}
+    </div>
+</div>
+
+{% put scripts %}
+
+<script>
+
+    $(() => {
+        $(document).on('keypress', '#search-input', (e) => {
+            if (e.which === 13) {
+                search();
+            }
+        });
+
+        $(document).on('click', '#search-ico', () => {
+            search();
+        })
+    });
+
+    search = () => {
+        $.request('onSearch', {
+            data: {
+                text: $('#search-input').val(),
+                user_id: $('#user_id').val()
+            },
+            update: { 'patients/table': '#patients-table' }
+        })
+    };
+
+</script>
+
+{% endput %}

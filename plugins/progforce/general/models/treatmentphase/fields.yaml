@@ -1,0 +1,65 @@
+fields:
+
+    id:
+        label:
+        type: number
+        hidden: true
+    description:
+        label: progforce.general::lang.treatmentphases.description
+        type: text
+        span: auto
+        required: true
+    number_of_syllables:
+        label: progforce.general::lang.treatmentphases.number_of_syllables
+        span: auto
+        required: true
+    intonation:
+        label: progforce.general::lang.treatmentphases.intonation
+        type: text
+        span: auto
+        required: true
+    location_within_word_field:
+        label: progforce.general::lang.treatmentphases.location_within_word
+        type: relation
+        select: description
+        span: auto
+        required: true
+        default: 6
+    segment_location_within_phoneme_field:
+        label: progforce.general::lang.treatmentphases.segment_location_within_phoneme
+        type: relation
+        select: function
+        span: auto
+        required: true
+        default: 4
+    complexity:
+        label: progforce.general::lang.treatmentphases.complexity
+        type: relation
+        select: description
+        span: auto
+        required: true
+        default: 3
+    part_of_speech_field:
+        label: progforce.general::lang.treatmentphases.part_of_speech
+        type: relation
+        select: name
+        span: auto
+        required: true
+        default: 4
+    game_mode:
+        label: progforce.general::lang.gamemodes.name
+        type: relation
+        select: description
+        emptyOption: 'Not Selected'
+        span: auto
+    utterance_type:
+        label: Utterance Type
+        type: relation
+        select: name
+        emptyOption: 'Any'
+        span: left
+    sound_occurrences:
+        label: Sound Occurences
+        type: number
+        comment: Leave blank for ANY
+        span: right

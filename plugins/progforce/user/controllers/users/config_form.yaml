@@ -1,0 +1,25 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: progforce.user::lang.user.label
+
+# Model Form Field configuration
+form: $/progforce/user/models/user/fields.yaml
+
+# Model Class name
+modelClass: Progforce\User\Models\User
+
+# Default redirect location
+defaultRedirect: progforce/user/users
+
+# Create page
+create:
+    redirect: progforce/user/users/preview/:id
+    redirectClose: progforce/user/users
+
+# Update page
+update:
+    redirect: progforce/user/users/update/:id
+    redirectClose: progforce/user/users/preview/:id

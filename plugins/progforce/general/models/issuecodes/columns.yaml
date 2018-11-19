@@ -1,0 +1,15 @@
+columns:
+    issue_id:
+        label: 'Issue ID'
+        type: number
+        searchable: true
+        sortable: true
+    message:
+        label: Message
+        type: text
+        searchable: true
+        sortable: true
+    description:
+        label: Description
+        type: text
+        searchable: true

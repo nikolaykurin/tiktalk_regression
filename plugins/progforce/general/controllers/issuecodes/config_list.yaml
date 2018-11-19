@@ -1,0 +1,12 @@
+list: $/progforce/general/models/issuecodes/columns.yaml
+modelClass: Progforce\General\Models\IssueCodes
+title: IssueCodes
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'progforce/general/issuecodes/update/:id'

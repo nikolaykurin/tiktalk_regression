@@ -1,0 +1,39 @@
+.pnl-patients {
+    .pnl-patients-header {
+        padding: 15px 20px;
+    }
+    .search {
+        padding: 0 5px;
+        input {
+            border: 1px solid lightgray;
+            border-radius: 5px;
+        }
+        span {
+            cursor: pointer;
+        }
+    }
+    .pnl-patients-content {
+        min-width: 1100px;
+        padding: 0 20px 20px;
+        .tbl {
+            padding: 0 15px;
+            .tbl-body .tbl-row .tbl-td {
+                line-height: 28px;
+                padding: 20px 15px;
+                &:first-child {
+                    padding: 0 15px;
+                }
+            }
+        }
+        .patient-avatar {
+            border: 3px solid #d1dfdf;
+            float:left;
+            height: 70px;
+            object-fit: cover;
+            width: 70px;
+         }
+        .pointer {
+            cursor: pointer;
+        }
+    }
+}

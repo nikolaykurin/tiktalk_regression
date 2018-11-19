@@ -1,0 +1,100 @@
+body {
+  background-color: #edf7f6;
+ 
+}
+
+.jumbotron {
+    background-color: #ffffff;
+}
+
+.input-control {
+    font-size: 12px;
+    font-family: "Open Sans";
+    color: rgb(110, 137, 137, 0.5);
+    border-bottom: 1px solid rgba(110, 137, 137, 0.3);
+    line-height: 1.2;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.input-control:focus {
+    color: rgb(110, 137, 137);
+    border-bottom: 1px solid rgb(1, 172, 181);
+}
+
+.content-box-container {
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 2px 6px 0platox rgba(136, 156, 176, 0.1);
+}
+
+.btn-gradient {
+  background-image: -moz-linear-gradient( 0deg, rgb(0, 170, 183) 0%, rgb(22, 196, 143) 100%);
+  background-image: -webkit-linear-gradient( 0deg, rgb(0, 170, 183) 0%, rgb(22, 196, 143) 100%);
+  background-image: -ms-linear-gradient( 0deg, rgb(0, 170, 183) 0%, rgb(22, 196, 143) 100%);
+  height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btn-gradient a {
+  color: #fff;
+}
+
+.btn-outline-blue {
+  background-color: transparent;
+  border: 1px solid rgb(8, 181, 167);
+  height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btn-outline-blue a {
+  color: rgb(8, 181, 167);
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  border: 1px solid rgb(256, 256, 256);
+  height: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.btn-outline-white a {
+  color: rgb(256, 256, 256);
+}
+
+.rounded {
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.h2 {
+  font-size: 14px;
+  font-family: "Lato";
+  color: rgb(110, 137, 137);
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.popup {
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 2px 6px 0px rgba(136, 156, 176, 0.1);
+  padding: 30px;
+}
+
+.popup-title {
+  font-size: 16px;
+  font-family: "lato";
+  color: rgb(110, 137, 137);
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 1.2;
+}

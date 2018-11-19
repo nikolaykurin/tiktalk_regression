@@ -1,0 +1,11 @@
+<div class="loading-indicator-container">
+    <?php if ($model->hasTrainingRecordings()) : ?>
+        <a  download
+            href="/download_training_recordings?user_id=<?= $model->id ?>"
+            class="btn btn-primary"
+            data-stripe-load-indicator
+        ><?= e(trans('progforce.user::lang.user.download_btn')) ?></a>
+    <?php else : ?>
+        <b><span class="text-danger"><?= e(trans('progforce.user::lang.user.no_recordings')) ?></span></b>
+    <?php endif ?>
+</div>

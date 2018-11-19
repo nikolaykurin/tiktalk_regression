@@ -1,0 +1,27 @@
+.plus-btn {
+    .gradient;
+    border-radius: 50%;
+    bottom: 0;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    height: 15px;
+    margin: 0;
+    position: absolute;
+    padding: 15px;
+    right: 0;
+    width: 15px;
+    &:before {
+        content:  "+";
+        font-size: 20px;
+        left: 10px;
+        position: absolute;
+        top: 0;
+    }
+    &:hover, &:focus {
+        opacity: 0.9;
+    }
+    input[type="file"] {
+        display: none;
+    }
+}

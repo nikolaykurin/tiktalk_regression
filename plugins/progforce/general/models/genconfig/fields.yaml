@@ -1,0 +1,20 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+tabs:
+    fields:
+        activation_code:
+            tab: General
+            label: Activation Code
+        gui_en:
+            tab: GUI EN
+            type: codeeditor
+            fontSize: 16
+            wrapWords: false
+            size: giant
+        gui_he:
+            tab: GUI HE
+            type: codeeditor
+            fontSize: 16
+            wrapWords: false
+            size: giant

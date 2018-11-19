@@ -1,0 +1,16 @@
+.btn {
+    padding: 0 5px;
+}
+.no-display {
+    display: none !important;
+}
+.warning {
+    margin: 0;
+}
+.no-padding {
+    padding: 0;
+}
+.table-div {
+    max-height: 350px;
+    overflow-x: auto;
+}

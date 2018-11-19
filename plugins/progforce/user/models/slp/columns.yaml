@@ -1,0 +1,29 @@
+columns:
+    id:
+        label: ID
+        type: number
+        searchable: true
+        sortable: true
+    first_name:
+        label: 'First name'
+        type: text
+        searchable: true
+        sortable: true
+    last_name:
+        label: 'Last name'
+        type: text
+        searchable: true
+        sortable: true
+    gender:
+        label: Gender
+        type: text
+    languages_list:
+        label: 'Therapy language'
+        type: text
+        searchable: true
+        sortable: true
+    user_name:
+        label: 'User name'
+        type: text
+        searchable: true
+        sortable: true

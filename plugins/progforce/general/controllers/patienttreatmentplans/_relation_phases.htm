@@ -1,0 +1,97 @@
+<i
+    class="btn btn-primary"
+    onclick="onShowPlanPhaseModal(this)"
+    data-plan-phase-id="0"
+    data-phase-id = "1"
+    data-status-id = "1"
+>
+    Add Phase
+</i>
+<?php $planPhases = $this->planPhases; ?>
+<table id="tablePhases" class="table table-condensed table-striped">
+    <thead>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <?php foreach ($planPhases as $phase): ?>
+            <tr data-row-num = "<?=  $phase->row_num; ?>">
+                <td><?=  $phase->phase_description; ?></td>
+                <td><?=  $phase->status_description; ?></td>
+                <td><?=  $phase->phase_status_date; ?></td>
+                <td>
+                    <i
+                        class="btn btn-default icon-pencil icon-1x" 
+                        onclick="onShowPlanPhaseModal(this)"
+                        data-plan-phase-id="<?=  $phase->id; ?>"
+                        data-phase-id = "<?=  $phase->phase_id; ?>"
+                        data-status-id = "<?=  $phase->phase_status_id; ?>"
+                        style="padding: 10px 20px 11px 20px; margin-right: 5px;"
+                    >
+                    </i>
+                    <?php if (!($phase->phase_id == 1 && $phase->row_num == 1)): ?>
+                        <button
+                            class="btn btn-danger oc-icon-trash"
+                            data-request="onPlanPhaseDelete"
+                            data-request-data="id:<?=  $phase->id; ?>"
+                            data-request-confirm="Are you sure?"
+                            data-request-success="location.reload();"
+                        >
+                        </button>
+                    <?php endif ?>
+                </td>
+            </tr>
+        <?php endforeach ?>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="planPhaseModal" tabindex="-1" role="dialog" aria-labelledby="plan-phase" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="edit-device-title"><Add Phase</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                    <input type="hidden" name="id" value="{{ patient.id }}">
+
+                    <div class="form-group">
+                        <label for="frmPhase">Phase</label>
+                            <select class="form-control" id="frmPhase" name="phase_id">
+                                <?php foreach ($this->phases as $phase): ?>
+                                    <option value="<?=  $phase->id; ?>">
+                                        <?=  $phase->description; ?>
+                                    </option>
+                                 <?php endforeach ?>
+                            </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="frmStatus">Status</label>
+                            <select class="form-control" id="frmStatus" name="status_id">
+                                <?php foreach ($this->statuses as $status): ?>
+                                    <option value="<?=  $status->id; ?>">
+                                        <?=  $status->description; ?>
+                                    </option>
+                                 <?php endforeach ?>
+                            </select>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnOKPhaseModal" class="btn btn-primary" data-dismiss="modal">
+                    OK
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

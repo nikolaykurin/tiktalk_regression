@@ -1,0 +1,23 @@
+    <div class="form-group">
+        <div style="text-align: center;">
+            <img src="<?php echo $record->getImagePath(); ?>" width="64"/>
+        </div>
+        <div style="text-align: center;">
+            <label id="lblWord-<?= $record->id ?>" for="btnShowWordModal">
+                <?= $record->word ?>
+            </label>
+            <i 
+                class="icon-play icon-1x" 
+                id="btnShowWordModal-<?= $record->id ?>" 
+                data-id="<?= $record->id ?>" 
+                data-word="<?= $record->word; ?>"
+                data-img="<?= $record->getImagePath(); ?>"
+                data-audio="<?= $record->getAudioPath(); ?>"
+                onclick="onShowWordModal(this)"
+                <?php if ($record->getAudioPath() == ''): ?>
+                    style="color:red;"
+                <?php endif ?>
+            >
+            </i>
+        </div>
+    </div>

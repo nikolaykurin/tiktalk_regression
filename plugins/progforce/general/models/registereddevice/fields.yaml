@@ -1,0 +1,45 @@
+fields:
+    id:
+        label: progforce.general::lang.registereddevices.id
+        disabled: true
+        hidden: true
+    device_id:
+        label: progforce.general::lang.registereddevices.device_id
+        type: text
+        span: left
+    imei_id:
+        label: IMEI ID
+        type: text
+        span: left
+    firebase_id:
+        label: Firebase ID
+        type: text
+        span: right
+    mac_id:
+        label: Mac ID
+        type: text
+        span: left
+    android_id:
+        label: Android ID
+        type: text
+        span: right
+    unity_id:
+        label: Unity ID
+        type: text
+        span: left
+    active_version:
+        label: Active Version
+        type: text
+        span: left
+    server_id:
+        label: Device Server
+        type: dropdown
+        span: left
+    white_label_id:
+        label: White Label
+        type: dropdown
+        span: left
+    is_white_label:
+        label: White Label Mode
+        type: switch
+        span: left

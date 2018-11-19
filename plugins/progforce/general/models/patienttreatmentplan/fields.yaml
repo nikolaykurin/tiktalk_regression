@@ -1,0 +1,35 @@
+fields:
+
+    id:
+        label: progforce.general::lang.patienttreatmentplans.id
+        type: number
+        hidden: true
+    user:
+        label: progforce.general::lang.patienttreatmentplans.user
+        type: relation
+        select: first_name
+        span: auto
+        required: true
+    protocol_sequence:
+        label: progforce.general::lang.patienttreatmentplans.protocol_sequence
+        type: number
+        span: auto
+        required: true
+    protocol_status_field:
+        label: progforce.general::lang.patienttreatmentplans.protocol_status
+        #type: number
+        type: relation
+        select: description
+        emptyOption: 'Not Selected'
+        span: auto
+        required: true
+    sound:
+        label: progforce.general::lang.patienttreatmentplans.sound
+        type: dropdown
+        span: auto
+        emptyOption: 'Not Selected'
+        required: true
+        dependsOn: user
+    phases@update:
+        type: partial
+        path: $/progforce/general/controllers/patienttreatmentplans/_relation_phases.htm

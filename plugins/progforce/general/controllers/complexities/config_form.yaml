@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Complexity
+
+# Model Form Field configuration
+form: $/progforce/general/models/complexity/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\Complexity
+
+# Default redirect location
+defaultRedirect: progforce/general/complexities
+
+# Create page
+create:
+    title: Create Complexity
+    redirect: progforce/general/complexities/update/:id
+    redirectClose: progforce/general/complexities
+
+# Update page
+update:
+    title: Edit Complexity
+    redirect: progforce/general/complexities
+    redirectClose: progforce/general/complexities
+
+# Preview page
+preview:
+    title: Preview Complexity

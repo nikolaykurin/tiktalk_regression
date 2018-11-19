@@ -1,0 +1,42 @@
+fields:
+
+    id:
+        label:
+        type: number
+        hidden: true
+    language@create:
+        label: progforce.general::lang.languageconfigurations.language
+        type: dropdown
+        emptyOption: 'Not Selected'
+        span: auto
+        required: true
+    language@update:
+        label: progforce.general::lang.languageconfigurations.language
+        type: dropdown
+        span: auto
+        disabled: true
+    path_to_images@create:
+        label: progforce.general::lang.languageconfigurations.path_to_images
+        type: text
+        span: auto
+        required: true
+    path_to_images@update:
+        label: progforce.general::lang.languageconfigurations.path_to_images
+        type: text
+        span: auto
+        disabled: true
+    path_to_recordings@create:
+        label: progforce.general::lang.languageconfigurations.path_to_recordings
+        type: text
+        span: auto
+        required: true
+    path_to_recordings@update:
+        label: progforce.general::lang.languageconfigurations.path_to_recordings
+        type: text
+        span: auto
+        disabled: true
+    words_table:
+        label: progforce.general::lang.languageconfigurations.table
+        type: text
+        span: auto
+        required: true

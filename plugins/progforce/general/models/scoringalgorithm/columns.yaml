@@ -1,0 +1,13 @@
+columns:
+    id:
+        label: progforce.general::lang.scoringalgorithms.id
+        searchable: true
+    language_id:
+        label: Language
+    field:
+        label: progforce.general::lang.scoringalgorithms.field
+        type: text
+        searchable: true
+    value:
+        label: progforce.general::lang.scoringalgorithms.value
+        type: number

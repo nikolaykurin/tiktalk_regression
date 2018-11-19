@@ -1,0 +1,47 @@
+<a
+    href="<?= Backend::url('progforce/user/users') ?>"
+    class="btn btn-default oc-icon-chevron-left">
+    <?= e(trans('progforce.user::lang.groups.return_to_users')) ?>
+</a>
+<a
+    href="<?= Backend::url('progforce/user/users/update/'.$formModel->id) ?>"
+    class="btn btn-primary oc-icon-pencil">
+    <?= e(trans('progforce.user::lang.users.update_details')) ?>
+</a>
+<?php if ($this->user->hasAccess('progforce.users.impersonate_user')): ?>
+    <a
+        href="javascript:;"
+        data-request="onImpersonateUser"
+        data-request-confirm="<?= e(trans('progforce.user::lang.users.impersonate_confirm')) ?>"
+        class="btn btn-default oc-icon-user-secret">
+        <?= e(trans('progforce.user::lang.users.impersonate_user')) ?>
+    </a>
+<?php endif ?>
+<a
+    type="button"
+    data-request="onDuplicate"
+    data-request-data="id:<?php echo $this->vars['formModel']->id ?>"
+    class="btn btn-default">
+    <?= \Lang::get('progforce.user::lang.users.duplicate'); ?>
+</a>
+<?php
+/* @todo
+<div class="btn-group">
+    <a
+        href="<?= Backend::url('progforce/user/users/update/'.$formModel->id) ?>"
+        class="btn btn-default oc-icon-pencil">
+        Deactivate
+    </a>
+    <a
+        href="<?= Backend::url('progforce/user/users/update/'.$formModel->id) ?>"
+        class="btn btn-default oc-icon-pencil">
+        Ban user
+    </a>
+    <a
+        href="<?= Backend::url('progforce/user/users/update/'.$formModel->id) ?>"
+        class="btn btn-default oc-icon-pencil">
+        Delete
+    </a>
+</div>
+*/
+?>

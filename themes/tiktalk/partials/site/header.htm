@@ -1,0 +1,27 @@
+<nav class="navbar navbar-light main-header">
+    <a class="navbar-brand" href="/clinician/patients">
+        <img src="{{ 'assets/images/logo-tiktalk.png'|theme }}" alt="logo"/>
+        <span class="hidden-xs">Professional assistant for speech therapists</span>
+    </a>
+    <div class="dropdown user-menu">
+        <button
+            class="dropdown-toggle"
+            type="button"
+            id="dropdown-menu"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+        >
+            <img 
+                {% set avatarPath = user.avatar ? user.avatar.path : 'assets/images/patient-def-avatar.png'|theme %}
+                src="{{ avatarPath }}" 
+                class="d-inline-block align-top" alt=""
+            />
+            <span class="user-name hidden-xs">{{ user.first_name }}</span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdown-menu">
+            <a class="dropdown-item" href="/clinician/slp">SLP Profile</a>
+            <a class="dropdown-item" href="#" data-request="slp_session::onLogout">Logout</a>
+        </div>
+    </div>
+</nav>

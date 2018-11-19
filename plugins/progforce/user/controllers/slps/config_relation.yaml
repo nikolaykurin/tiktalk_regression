@@ -1,0 +1,13 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+patients:
+    label: Patient
+    view:
+        list: ~/plugins/progforce/user/models/user/columns.yaml
+        form: ~/plugins/progforce/user/models/user/slp_fields.yaml
+        showSearch: true
+        toolbarButtons: add|remove
+    manage:
+        form: ~/plugins/progforce/user/models/user/slp_fields.yaml

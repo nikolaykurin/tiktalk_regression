@@ -1,0 +1,10 @@
+name: IssueCodes
+form: $/progforce/general/models/issuecodes/fields.yaml
+modelClass: Progforce\General\Models\IssueCodes
+defaultRedirect: progforce/general/issuecodes
+create:
+    redirect: 'progforce/general/issuecodes/update/:id'
+    redirectClose: progforce/general/issuecodes
+update:
+    redirect: progforce/general/issuecodes
+    redirectClose: progforce/general/issuecodes

@@ -1,0 +1,18 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+plan_phases:
+    label: Phases
+    list: ~/plugins/progforce/general/models/treatmentphase/plan_columns.yaml
+    view:
+        toolbarButtons: link|unlink
+    manage:
+        recordsPerPage: 10
+        showSearch: true
+    pivot:
+        form:
+            fields:
+                pivot[phase_status_id]:
+                    label: Phase Status 
+                    type: dropdown

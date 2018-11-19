@@ -1,0 +1,42 @@
+columns:
+    id:
+        label: progforce.general::lang.patienttreatmentplans.id
+        type: number
+        sortable: true
+        searchable: true
+    code:
+        label: progforce.user::lang.user.code
+        relation: user
+        select: id
+        sortable: true
+        searchable: true
+    first_name:
+        label: progforce.user::lang.user.first_name
+        relation: user
+        select: first_name
+        sortable: true
+        searchable: true
+    last_name:
+        label: progforce.user::lang.user.last_name
+        relation: user
+        select: last_name
+        sortable: true
+        searchable: true
+    protocol_sequence:
+        label: progforce.general::lang.patienttreatmentplans.protocol_sequence
+        type: number
+    protocol_status_field:
+        label: progforce.general::lang.patienttreatmentplans.protocol_status
+        #type: number
+        relation: protocol_status_field
+        select: description
+    sound_id:
+        Sound ID
+    sound:
+        label: progforce.general::lang.patienttreatmentplans.sound
+        relation: sound
+        select: sound
+        searchable: true
+        sortable: true
+    sound_id:
+        label: Sound Id

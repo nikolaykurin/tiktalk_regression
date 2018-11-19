@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Word he_il
+
+# Model Form Field configuration
+form: $/progforce/general/models/wordbase/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\WordHeIl
+
+# Default redirect location
+defaultRedirect: progforce/general/wordsheil
+
+# Create page
+create:
+    title: Create Word
+    redirect: progforce/general/wordsheil/update/:id
+    redirectClose: progforce/general/wordsheil
+
+# Update page
+update:
+    title: Edit Word
+    redirect: progforce/general/wordsheil
+    redirectClose: progforce/general/wordsheil
+
+# Preview page
+preview:
+    title: Preview Word

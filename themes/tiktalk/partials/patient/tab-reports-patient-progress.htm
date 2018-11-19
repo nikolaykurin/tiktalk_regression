@@ -1,0 +1,39 @@
+<div class="patient-progress">
+    {% partial 'content-header' header='Patient Progress' %}
+    <select id="selProgressSound" class="custom-select sel-progress-sound">
+        {% for id,sound in progress.sounds %}
+            {% set optionSelected = id == 0 ? 'selected' : '' %}
+            <option 
+                value="{{ id }}" 
+                data-completed="{{progress.vals[id].completed}}" 
+                data-total="{{progress.vals[id].total}}"
+                {{ optionSelected }}
+            >
+                {{ sound }}
+            </option>
+        {% endfor %}
+    </select>
+    <div class="progress">
+        {% set pVal = progress.vals[0].total > 0 ? progress.vals[0].completed*100/progress.vals[0].total : 0 %}
+        <div
+            id="barProgress1"
+            class="progress-bar progress-bar-striped progress-bar-animated bg-info" 
+            role="progressbar" 
+            style="width: {{pVal}}%" 
+            aria-valuenow="{{pVal}}" 
+            aria-valuemin="0" 
+            aria-valuemax="100"
+        >
+            {{pVal|round}}%
+        </div>
+        <div
+            id="barProgress2"
+            class="progress-bar" 
+            role="progressbar" 
+            style="width: {{100-pval}}%" 
+            aria-valuenow="{{100-pval}}" 
+            aria-valuemin="0" aria-valuemax="100"
+       >
+        </div>
+    </div>
+</div>

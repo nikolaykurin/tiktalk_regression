@@ -1,0 +1,9 @@
+<div>
+    <img src="<?php echo $model->getImagePath(); ?>"/>
+    <div>
+        <audio id="wordAudio" controls>
+            <source src="<?php echo $model->getAudioPath(); ?>" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+</div>

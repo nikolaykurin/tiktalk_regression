@@ -1,0 +1,105 @@
+fields:
+    image:
+        type: partial
+        path: ~/plugins/progforce/general/models/wordbase/_word_fields_partial.htm
+        span: right
+    word_id:
+        label: 'progforce.general::lang.words.word_id'
+        type: text
+        span: left
+        required: true
+        preset:
+            field: word
+            type: slug
+    word:
+        label: 'progforce.general::lang.words.word'
+        type: text
+        span: left
+        required: true
+    language:
+        label: 'progforce.general::lang.words.language'
+        type: relation
+        select: language
+        emptyOption: 'Not Selected'
+        span: left
+        required: true
+        hidden: true
+    sound:
+        label: 'progforce.general::lang.words.sound'
+        type: dropdown
+        span: left
+        required: true
+    phoneme:
+        label: 'progforce.general::lang.words.phoneme'
+        type: text
+        span: auto
+        required: true
+    number_of_syllables:
+        label: 'progforce.general::lang.words.number_of_syllables'
+        type: number
+        span: auto
+        required: true
+    intonation:
+        label: 'progforce.general::lang.words.intonation'
+        type: text
+        span: auto
+        required: true
+    location_within_word:
+        label: 'progforce.general::lang.words.location_within_word'
+        type: relation
+        select: description
+        emptyOption: 'Not Selected'
+        span: auto
+        required: true
+    segment_location_within_phoneme:
+        label: 'progforce.general::lang.words.segment_location_within_phoneme'
+        type: relation
+        select: function
+        emptyOption: 'Not Selected'
+        span: auto
+        required: true
+    complexity:
+        label: 'progforce.general::lang.words.complexity'
+        type: relation
+        select: description
+        emptyOption: 'Not Selected'
+        span: auto
+        required: true
+    part_of_speech:
+        label: 'progforce.general::lang.words.part_of_speech'
+        type: relation
+        select: name
+        emptyOption: 'Not Selected'
+        span: auto
+        required: true
+    utterance_type:
+        label: Utterance Type
+        type: relation
+        select: name
+        emptyOption: 'Not Selected'
+        span: left
+    sound_occurrences:
+        label: Sound Occurences
+        type: number
+        comment: Leave blank for ANY
+        span: right
+    transcription1:
+        label: 'Transcription 1'
+        oc.commentPosition: ''
+        span: left
+        type: text
+    transcription2:
+        label: 'Transcription 2'
+        oc.commentPosition: ''
+        span: right
+        type: text
+    transcription3:
+        label: 'Transcription 3'
+        oc.commentPosition: ''
+        span: left
+        type: text
+    transcription4:
+        label: 'Transcription 4'
+        span: right
+        oc.commentPosition: ''
+        type: text

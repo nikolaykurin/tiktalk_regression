@@ -1,0 +1,30 @@
+{% if not user %}
+
+    <div class="jumbotron">
+        <div class="container">
+
+            <div class="container">
+                <div class="row">
+                    <div class="m-auto">
+                        <div class="form-login">
+                            <h4>Welcome back!</h4>
+
+                            {% partial __SELF__ ~ '::signin' %}
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+
+    {% partial __SELF__ ~ '::activation_check' %}
+
+    {% partial __SELF__ ~ '::update' %}
+
+    {% partial __SELF__ ~ '::deactivate_link' %}
+
+{% endif %}

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Sound
+
+# Model Form Field configuration
+form: $/progforce/general/models/sound/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\Sound
+
+# Default redirect location
+defaultRedirect: progforce/general/sounds
+
+# Create page
+create:
+    title: Create Sound
+    redirect: progforce/general/sounds/update/:id
+    redirectClose: progforce/general/sounds
+
+# Update page
+update:
+    title: Edit Sound
+    redirect: progforce/general/sounds
+    redirectClose: progforce/general/sounds
+
+# Preview page
+preview:
+    title: Preview Sound

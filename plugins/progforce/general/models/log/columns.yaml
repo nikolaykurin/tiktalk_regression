@@ -1,0 +1,17 @@
+columns:
+    id:
+        label: progforce.general::lang.logs.id
+        searchable: true
+    user:
+        label: progforce.general::lang.logs.user
+        relation: user
+        select: first_name
+    datetime:
+        label: progforce.general::lang.logs.datetime
+        type: datetime
+    action:
+        label: progforce.general::lang.logs.action
+        type: text
+    data:
+        label: progforce.general::lang.logs.data
+        type: text

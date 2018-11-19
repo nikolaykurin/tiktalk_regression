@@ -1,0 +1,67 @@
+columns:
+    id:
+        label: progforce.general::lang.words.id
+        type: number
+        hidden: true
+        sortable: true
+        searchable: true
+    language:
+        label: progforce.general::lang.words.language
+        relation: language
+        select: language
+    word_id:
+        label: progforce.general::lang.words.word_id
+        type: number
+        sortable: true
+        searchable: true
+    word:
+        label: progforce.general::lang.words.word
+        cssClass: nolink
+        type: partial
+        path: ~/plugins/progforce/general/models/wordbase/_word_columns_partial.htm
+        searchable: true
+        sortable: true
+    sound_id:
+        Sound ID
+    sound:
+        label: progforce.general::lang.words.sound
+        relation: sound
+        select: sound
+        searchable: true
+        sortable: true
+    phoneme:
+        label: progforce.general::lang.words.phoneme
+        type: text
+    number_of_syllables:
+        label: progforce.general::lang.words.number_of_syllables
+        type: number
+    intonation:
+        label: progforce.general::lang.words.intonation
+        type: text
+    location_within_word:
+        label: progforce.general::lang.words.location_within_word
+        relation: location_within_word
+        select: description
+        searchable: true
+        sortable: true
+    segment_location_within_phoneme:
+        label: progforce.general::lang.words.segment_location_within_phoneme
+        relation: segment_location_within_phoneme
+        select: function
+        searchable: true
+        sortable: true
+    complexity:
+        label: progforce.general::lang.words.complexity
+        relation: complexity
+        select: description
+        searchable: true
+        sortable: true
+    part_of_speech:
+        label: progforce.general::lang.words.part_of_speech
+        relation: part_of_speech
+        select: name
+        searchable: true
+        sortable: true
+    transcription1:
+        label: progforce.general::lang.words.transcription1
+        type: text

@@ -1,0 +1,10 @@
+name: GameModes
+form: $/progforce/general/models/gamemode/fields.yaml
+modelClass: Progforce\General\Models\GameMode
+defaultRedirect: progforce/general/gamemodes
+create:
+    redirect: 'progforce/general/gamemodes/update/:id'
+    redirectClose: progforce/general/gamemodes
+update:
+    redirect: progforce/general/gamemodes
+    redirectClose: progforce/general/gamemodes

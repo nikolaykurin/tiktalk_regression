@@ -1,0 +1,19 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Sound
+
+# Model Form Field configuration
+form: $/progforce/report/models/sound/fields.yaml
+
+# Model Class name
+modelClass:
+
+# Default redirect location
+defaultRedirect: progforce/report/reports
+
+# Preview page
+preview:
+    title: Preview Sound

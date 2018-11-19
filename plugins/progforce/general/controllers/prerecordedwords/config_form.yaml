@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Prerecorded Words
+
+# Model Form Field configuration
+form: $/progforce/general/models/prerecordedword/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\PrerecordedWord
+
+# Default redirect location
+defaultRedirect: progforce/general/prerecordedwords
+
+# Create page
+create:
+    title: Create Prerecorded Word
+    redirect: progforce/general/prerecordedwords/update/:id
+    redirectClose: progforce/general/prerecordedwords
+
+# Update page
+update:
+    title: Edit Prerecorded Word
+    redirect: progforce/general/prerecordedwords
+    redirectClose: progforce/general/prerecordedwords
+
+# Preview page
+preview:
+    title: Preview Prerecorded Word

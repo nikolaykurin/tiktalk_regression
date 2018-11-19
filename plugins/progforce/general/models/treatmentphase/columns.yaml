@@ -1,0 +1,35 @@
+columns:
+    id:
+        label: progforce.general::lang.treatmentphases.id
+        type: number
+        sortable: true
+        searchable: true
+    description:
+        label: progforce.general::lang.treatmentphases.description
+        type: text
+        sortable: true
+        searchable: true
+    number_of_syllables:
+        label: progforce.general::lang.treatmentphases.number_of_syllables
+    intonation:
+        label: progforce.general::lang.treatmentphases.intonation
+        type: text
+    location_within_word:
+        label: progforce.general::lang.treatmentphases.location_within_word
+        relation: location_within_word_field
+        select: description
+    segment_location_within_phoneme:
+        label: progforce.general::lang.treatmentphases.segment_location_within_phoneme
+        type: text
+    complexity:
+        label: progforce.general::lang.treatmentphases.complexity
+        relation: complexity
+        select: description
+    part_of_speech:
+        label: progforce.general::lang.treatmentphases.part_of_speech
+        relation: part_of_speech_field
+        select: name
+    game_mode:
+        label: progforce.general::lang.gamemodes.name
+        relation: game_mode
+        select: description

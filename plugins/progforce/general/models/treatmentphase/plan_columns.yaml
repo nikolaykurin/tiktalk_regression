@@ -1,0 +1,14 @@
+columns:
+    description:
+        label: Phase
+        type: text
+        sortable: true
+        searchable: false
+    pivot[status]:
+        label: Status
+        sortable: false
+        searchable: false
+    pivot[phase_status_date]:
+        label: Date
+        sortable: false
+        searchable: false

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Treatment Phase
+
+# Model Form Field configuration
+form: $/progforce/general/models/treatmentphase/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\TreatmentPhase
+
+# Default redirect location
+defaultRedirect: progforce/general/treatmentphases
+
+# Create page
+create:
+    title: Create Treatment Phase
+    redirect: progforce/general/treatmentphases/update/:id
+    redirectClose: progforce/general/treatmentphases
+
+# Update page
+update:
+    title: Edit Treatment Phase
+    redirect: progforce/general/treatmentphases
+    redirectClose: progforce/general/treatmentphases
+
+# Preview page
+preview:
+    title: Preview Treatment Phase

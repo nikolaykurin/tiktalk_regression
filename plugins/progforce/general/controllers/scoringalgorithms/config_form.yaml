@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Scoring Algorithm
+
+# Model Form Field configuration
+form: $/progforce/general/models/scoringalgorithm/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\ScoringAlgorithm
+
+# Default redirect location
+defaultRedirect: progforce/general/scoringalgorithms
+
+# Create page
+create:
+    title: Create Scoring Algorithm
+    redirect: progforce/general/scoringalgorithms/update/:id
+    redirectClose: progforce/general/scoringalgorithms
+
+# Update page
+update:
+    title: Edit Scoring Algorithm
+    redirect: progforce/general/scoringalgorithms
+    redirectClose: progforce/general/scoringalgorithms
+
+# Preview page
+preview:
+    title: Preview Scoring Algorithm

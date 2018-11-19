@@ -1,0 +1,14 @@
+title = "Patient's profile"
+url = "/clinician/patient/:id"
+is_hidden = 0
+layout = "patient"
+
+[patient]
+==
+
+{% put scripts %}
+    <script type="text/javascript" src="{{ ['assets/javascript/patient.js']|theme }}"></script>
+    <script type="text/javascript" src="{{ ['assets/javascript/modify-patient.js']|theme }}"></script>
+{% endput %}
+
+{% component 'patient' %}

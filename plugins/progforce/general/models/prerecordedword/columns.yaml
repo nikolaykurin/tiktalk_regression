@@ -1,0 +1,13 @@
+columns:
+    id:
+        label: progforce.general::lang.prerecordedwords.id
+        type: number
+        hidden: true
+        sortable: true
+        searchable: true
+    asset_id:
+        label: progforce.general::lang.prerecordedwords.asset_id
+        type: number
+    text:
+        label: progforce.general::lang.prerecordedwords.text
+        type: text

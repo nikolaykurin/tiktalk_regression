@@ -1,0 +1,53 @@
+<div id="tabPatientInfo" class="tab-patient pnl-info">
+    <div class="row">
+        <div class="col-12">
+            <div class="pnl-profile">
+                 <div class="row">
+                    <div class="col-12 col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                        <img
+                            class="patient-avatar rounded-circle"
+                            src="{{ patient.avatar ? patient.avatar.path : 'assets/images/patient-def-avatar.png'|theme }}"
+                        />
+                    </div>
+                    <div class="col-12 col-sm-8 col-md-9 col-lg-10 col-xl-10">
+                        <div class="name-row">
+                            <div class="name">
+                                {{ patient.first_name }} {{ patient.last_name }}
+                            </div>
+                            <div class="name-info">
+                                {{patient.age_calc}}, {{patient.country.description}} ({{patient.language.language}})
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="pnl-header">Patient Code</div>
+                                <div id="patientId" class="col-text" data-id="{{ patient.id }}">{{ patient.id }}</div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="pnl-header">Last Login</div>
+                                <div class="col-text">{{patient.last_login}}</div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="pnl-header">Last Session Duration</div>
+                                <div class="col-text">{{ patient.last_session_duration ? ( patient.last_session_duration == -1 ? 'Online' : '%d minutes'|format(patient.last_session_duration) ) : 'NULL' }}</div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="pnl-header">Device Id</div>
+                                <div class="col-text">{{ patient.registered_device ? patient.getRegisteredDeviceText() : 'NULL' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="pnl-control">
+                <button class="btn-gradient btn-edit-patient" data-id="{{patient.id}}">Edit Patient</button>
+            </div>
+        </div>
+    </div>
+
+</div>

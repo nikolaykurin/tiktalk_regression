@@ -1,0 +1,19 @@
+<div class="report-widget">
+    <h3>Logs</h3>
+    <div class="main-div">
+        <?php
+            $id = 0;
+            foreach ($langs as $lang) :
+        ?>
+            <div class="col-md-12">
+                <div class="col-md-8">
+                    <span class="text-success"><b><?= $lang ?></b></span>
+                </div>
+                <div class="col-md-4">
+                    <a href="/log/<?= $lang ?>" class="btn btn-default">Online</a>
+                    <a href="/log/<?= $lang ?>/download" class="btn btn-default">Download</a>
+                </div>
+            </div>
+        <?php endforeach ?>
+    </div>
+</div>

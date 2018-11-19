@@ -1,0 +1,14 @@
+title = "Patients"
+url = "/clinician/patients"
+is_hidden = 0
+layout = "default"
+
+[patients]
+==
+
+{% put scripts %}
+    <script type="text/javascript" src="{{ ['assets/javascript/patients.js']|theme }}"></script>
+    <script type="text/javascript" src="{{ ['assets/javascript/modify-patient.js']|theme }}"></script>
+{% endput %}
+
+{% component 'patients' %}

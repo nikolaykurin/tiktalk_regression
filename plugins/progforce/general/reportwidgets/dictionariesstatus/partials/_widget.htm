@@ -1,0 +1,161 @@
+<div class="report-widget">
+    <h3>Dictionaries Status</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="main-div">
+                <div id="buttons">
+                    <button type="button" id="btn_check" onclick="getStatus()">
+                        Check
+                    </button>
+                    <button type="button" id="btn_build" onclick="build()">
+                        Build
+                    </button>
+                </div>
+
+                <div id="waiting">
+                    Loading...
+                </div>
+                <div id="result">
+                    <label for="discrepancies">Discrepancies between dictionaries and DB</label>
+                    <div id="discrepancies" class="table-wrap">
+
+                    </div>
+                    <label for="discrepancies">Wrong phonemes in dictionaries</label>
+                    <div id="phonemes_dictionary" class="table-wrap">
+
+                    </div>
+                    <label for="discrepancies">Wrong phonemes in DB</label>
+                    <div id="phonemes_db" class="table-wrap">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    const urlCheck = '/dictionaries/status';
+    const urlBuild = '/dictionaries/build';
+
+    const divButtons = $('#buttons');
+    const divWaiting = $('#waiting');
+    const divResult = $('#result');
+    const divDiscrepancies = $('#discrepancies');
+    const divPhonemesDictionary = $('#phonemes_dictionary');
+    const divPhonemesDB = $('#phonemes_db');
+
+    $(document).ready(() => {
+        divResult.hide();
+        divWaiting.hide();
+    });
+
+    function getStatus() {
+        divButtons.hide();
+        divWaiting.show();
+        divResult.hide();
+
+        clearTables();
+
+        $.ajax({
+            url: urlCheck,
+            type: 'GET',
+            complete: () => {
+                divButtons.show();
+                divWaiting.hide();
+            },
+            success: (data) => {
+                makeTable(data['discrepancies'], divDiscrepancies);
+                makeTable(data['phonemes_dict'], divPhonemesDictionary);
+                makeTable(data['phonemes_db'], divPhonemesDB);
+
+                divResult.show();
+
+                // dirty hack, widget will recalculates its height on resize
+                window.dispatchEvent(new Event('resize'));
+            },
+            error: (data) => {
+                alert('Error')
+            }
+        });
+    }
+
+    function makeTable(data, appendTo) {
+        if (!data.length) {
+            const noData = document.createElement('p');
+            const text = document.createTextNode('No errors');
+            noData.appendChild(text);
+            appendTo.append(noData);
+            return;
+        }
+
+        const table = document.createElement('table');
+
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+
+        const trHeader = document.createElement('tr');
+
+        Object.keys(data[0]).forEach((key) => {
+            const td = document.createElement('th');
+            const text = document.createTextNode(key);
+            td.appendChild(text);
+            trHeader.appendChild(td);
+        });
+
+        thead.appendChild(trHeader);
+
+        data.forEach((item) => {
+            const tr = document.createElement('tr');
+            for (let key in item) {
+                const td = document.createElement('td');
+                const text = document.createTextNode(item[key]);
+                td.appendChild(text);
+                tr.appendChild(td)
+            }
+            tbody.appendChild(tr);
+        });
+
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        appendTo.append(table)
+    }
+
+    function clearTables() {
+        divDiscrepancies.find('table').remove();
+        divDiscrepancies.find('p').remove();
+        divPhonemesDictionary.find('table').remove();
+        divPhonemesDictionary.find('p').remove();
+        divPhonemesDB.find('table').remove();
+        divPhonemesDB.find('p').remove();
+    }
+
+    function build() {
+        divButtons.hide();
+        divWaiting.show();
+        divResult.hide();
+
+        clearTables();
+
+        $.ajax({
+            url: urlBuild,
+            type: 'GET',
+            complete: () => {
+                divButtons.show();
+                divWaiting.hide();
+            },
+            success: (data) => {
+                $.oc.flashMsg({
+                    'text': 'Dictionaries built successfully',
+                    'class': 'success',
+                    'interval': 3
+                })
+            },
+            error: (data) => {
+                alert('Error')
+            }
+        });
+    }
+
+</script>

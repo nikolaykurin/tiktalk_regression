@@ -1,0 +1,10 @@
+name: PartsOfSpeach
+form: $/progforce/general/models/partofspeechaux/fields.yaml
+modelClass: Progforce\General\Models\PartOfSpeechAux
+defaultRedirect: progforce/general/partsofspeach
+create:
+    redirect: 'progforce/general/partsofspeach/update/:id'
+    redirectClose: progforce/general/partsofspeach
+update:
+    redirect: progforce/general/partsofspeach
+    redirectClose: progforce/general/partsofspeach

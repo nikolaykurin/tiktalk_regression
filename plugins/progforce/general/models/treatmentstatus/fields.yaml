@@ -1,0 +1,11 @@
+fields:
+
+    id:
+        label:
+        type: number
+        hidden: true
+    description:
+        label: progforce.general::lang.treatmentstatuses.description
+        type: text
+        span: auto
+        required: true

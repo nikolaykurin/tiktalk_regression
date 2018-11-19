@@ -1,0 +1,6 @@
+*
+!.gitignore
+!media
+!uploads
+!temp
+!temp/*
