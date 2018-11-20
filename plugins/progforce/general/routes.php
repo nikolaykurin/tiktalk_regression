@@ -4,6 +4,7 @@
  */
 
 Route::prefix('results')->group(function () {
+    Route::get('generate', 'Progforce\General\Controllers\RoutesControllers\Results@generate');
     Route::get('fill', 'Progforce\General\Controllers\RoutesControllers\Results@fill');
     Route::get('clear', 'Progforce\General\Controllers\RoutesControllers\Results@clear');
     Route::get('get', 'Progforce\General\Controllers\RoutesControllers\Results@get');

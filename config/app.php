@@ -132,7 +132,8 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Chumper\Zipper\ZipperServiceProvider::class,
-        BackupManager\Laravel\Laravel55ServiceProvider::class
+        BackupManager\Laravel\Laravel55ServiceProvider::class,
+        Pixelpeter\Genderize\GenderizeServiceProvider::class
     ]),
 
     /*
@@ -152,7 +153,8 @@ return [
         'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
         'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Zipper' => Chumper\Zipper\Zipper::class
+        'Zipper' => Chumper\Zipper\Zipper::class,
+        'Genderize' => Pixelpeter\Genderize\Facades\Genderize::class
     ]),
 
 ];

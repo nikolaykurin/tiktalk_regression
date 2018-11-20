@@ -14,6 +14,7 @@ class CreateResultsTable extends Migration {
             $table->dateTime('treatment_finished_at')->nullable();
             $table->integer('treatment_duration')->nullable();
             $table->integer('treatment_complexity');
+            $table->integer('treatment_phases_count');
             $table->integer('patient_age');
             $table->integer('patient_gender');
         });
