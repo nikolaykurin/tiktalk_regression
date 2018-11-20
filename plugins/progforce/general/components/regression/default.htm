@@ -1,8 +1,15 @@
 <div class="container">
-    <div>
-        Model Status: <b>{{ model_exist ? 'BUILT' : 'NOT EXIST' }}</b>
-        <br/>
-        <button id="build" type="button" class="btn btn-primary">{{ model_exist ? 'Re-Build' : 'Build' }}</button>
+    <div class="row">
+        <div class="col-md-6">
+            Datafile Status: <b>{{ datafile_exists ? 'BUILT' : 'NOT EXIST' }}</b>
+            <br/>
+            <button id="build_datafile" type="button" class="btn btn-primary">{{ datafile_exist ? 'Re-Build' : 'Build' }} Datafile</button>
+        </div>
+        <div class="col-md-6">
+            Model Status: <b>{{ model_exist ? 'BUILT' : 'NOT EXIST' }}</b>
+            <br/>
+            <button id="build_model" type="button" class="btn btn-primary" {% if not datafile_exist %} disabled="disabled" {% endif %}>{{ model_exist ? 'Re-Build' : 'Build' }} Model</button>
+        </div>
     </div>
 
     <hr/>
@@ -25,16 +32,20 @@
                 <label for="complexity">Complexity</label>
                 <select id="complexity" class="form-control">
                     {% for key, complexity in complexity_values %}
-                    <option value="{{ key }}">{{ complexity | capitalize }}</option>
+                        <option value="{{ key }}">{{ complexity | capitalize }}</option>
                     {% endfor %}
                 </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Phase Count</label>
+                <input type="number" class="form-control" id="phase_count" value="1" step="1" min="1" max="10">
             </div>
             <div class="form-group">
                 <label for="date">Treatment Start Date</label>
                 <input id="date" class="form-control" data-provide="datepicker" data-date-format="yyyy-mm-dd">
             </div>
 
-            <button id="predict" type="button" class="btn btn-primary">Predict</button>
+            <button id="predict" type="button" class="btn btn-primary" {% if not model_exist %} disabled="disabled" {% endif %}>Predict</button>
         </form>
     </div>
 
@@ -61,6 +72,7 @@
             data.set('patient_age', $('#age').val());
             data.set('patient_gender', $('#gender').val());
             data.set('treatment_complexity', $('#complexity').val());
+            data.set('treatment_phases_count', $('#phase_count').val());
 
             $.ajax({
                 url: '/results/model/predict',
@@ -79,7 +91,21 @@
             });
         });
 
-        $('#build').on('click', () => {
+        $('#build_datafile').on('click', () => {
+            $.ajax({
+                url: '/results/make_data',
+                type: 'GET',
+                timeout: 0,
+                success: (response) => {
+                    location.reload();
+                }
+            }).fail((jqXHR, textStatus, errorThrown) => {
+                console.log(jqXHR, textStatus, errorThrown);
+            });
+
+        });
+
+        $('#build_model').on('click', () => {
             $.ajax({
                 url: '/results/model/build',
                 type: 'GET',
@@ -91,7 +117,7 @@
                 console.log(jqXHR, textStatus, errorThrown);
             });
 
-        })
+        });
     });
 
 </script>

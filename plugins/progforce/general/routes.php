@@ -8,7 +8,7 @@ Route::prefix('results')->group(function () {
     Route::get('fill', 'Progforce\General\Controllers\RoutesControllers\Results@fill');
     Route::get('clear', 'Progforce\General\Controllers\RoutesControllers\Results@clear');
     Route::get('get', 'Progforce\General\Controllers\RoutesControllers\Results@get');
-    Route::get('make_txt', 'Progforce\General\Controllers\RoutesControllers\Results@make_txt');
+    Route::get('make_data', 'Progforce\General\Controllers\RoutesControllers\Results@make_data');
 
     Route::prefix('model')->group(function () {
         Route::get('build', 'Progforce\General\Controllers\RoutesControllers\Results@build');

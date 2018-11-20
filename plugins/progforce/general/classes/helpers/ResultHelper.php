@@ -8,10 +8,10 @@ use Exception;
 
 class ResultHelper {
 
-    public static $MIN_ITERATIONS_COUNT = 50;
+    public static $MIN_ITERATIONS_COUNT = 1000;
     public static $MAX_ITERATIONS_COUNT = 10000;
 
-    public static $SYSTEM_START_DATE = '2018-09-21 00:00:00';
+    public static $SYSTEM_START_DATE = '2018-05-21 00:00:00';
     public static $SECONDS_IN_DAY = 86400;
     public static $SECONDS_IN_WEEK = 604800;
 
@@ -85,9 +85,9 @@ class ResultHelper {
     }
 
     public static function addTreatmentFinishedAt($result) {
-        $finished_at = $result->treatment_complexity === max(array_keys(self::$COMPLEXITIES)) ?
-            Carbon::createFromFormat('Y-m-d H:i:s', $result->treatment_started_at)->addSeconds(rand(self::$SECONDS_IN_DAY, rand(1, 5) * self::$SECONDS_IN_WEEK) * $result['treatment_phases_count'] * rand(50, 100) / 100) :
-            Carbon::createFromFormat('Y-m-d H:i:s', $result->treatment_started_at)->addSeconds(rand(rand(1, 3) * self::$SECONDS_IN_WEEK, rand(5, 12) * self::$SECONDS_IN_WEEK) * $result['treatment_phases_count'] * rand(70, 110) / 100);
+        $finished_at = $result->treatment_complexity >= (max(array_keys(self::$COMPLEXITIES)) + min(array_keys(self::$COMPLEXITIES))) / 2 ?
+            Carbon::createFromFormat('Y-m-d H:i:s', $result->treatment_started_at)->addSeconds(rand(rand(1, 3) * self::$SECONDS_IN_WEEK, rand(5, 12) * self::$SECONDS_IN_WEEK) * $result['treatment_phases_count'] * rand(70, 110) / 100) :
+            Carbon::createFromFormat('Y-m-d H:i:s', $result->treatment_started_at)->addSeconds(rand(self::$SECONDS_IN_DAY, rand(1, 5) * self::$SECONDS_IN_WEEK) * $result['treatment_phases_count'] * rand(50, 100) / 100);
 
         $result->treatment_finished_at = $finished_at->lessThan(Carbon::now()) ? $finished_at->format('Y-m-d H:i:s') : null;
 
@@ -112,7 +112,7 @@ class ResultHelper {
     public static function getRBuildScriptPath() {
         return implode(DIRECTORY_SEPARATOR, [
             base_path(),
-            config('r.path'),
+            config('r.folder'),
             config('r.filenames.build')
         ]);
     }
@@ -120,13 +120,13 @@ class ResultHelper {
     public static function getRPredictScriptPath() {
         return implode(DIRECTORY_SEPARATOR, [
             base_path(),
-            config('r.path'),
+            config('r.folder'),
             config('r.filenames.predict')
         ]);
     }
 
     public static function getDataFilePath() {
-        return config('r.paths.data');
+        return config('r.paths.data_file');
     }
 
     public static function getModelPath() {
@@ -162,7 +162,7 @@ class ResultHelper {
                 }
 
                 $row['patient_age'] = $datum['birth_date'] ? Carbon::createFromFormat('Y-m-d', $datum['birth_date'])->diffInYears() : null;
-                $row['patient_gender'] = is_null($gender) ? 1.5 : array_flip(self::$GENDERS)[$gender];
+                $row['patient_gender'] = is_null($gender) ? array_sum(array_keys(self::$GENDERS)) / count(self::$GENDERS) : array_flip(self::$GENDERS)[$gender];
 
                 $treatment_phases_count = 0;
                 $treatment_complexities_sum = 0;
@@ -177,9 +177,13 @@ class ResultHelper {
                     $treatment_phases_count++;
                 }
 
+
                 $row['treatment_started_at'] = $item['created_at'];
                 $row['treatment_finished_at'] = $treatment_finished_at ? Carbon::createFromFormat('Y-m-d', $treatment_finished_at)->format('Y-m-d H:i:s') : null;
-                $row['treatment_duration'] = $row['treatment_finished_at'] ? Carbon::createFromFormat('Y-m-d H:i:s', $row['treatment_started_at'])->diffInDays(Carbon::createFromFormat('Y-m-d H:i:s', $row['treatment_finished_at'])) : null;
+
+                $treatment_duration = $row['treatment_finished_at'] ? Carbon::createFromFormat('Y-m-d H:i:s', $row['treatment_started_at'])->diffInDays(Carbon::createFromFormat('Y-m-d H:i:s', $row['treatment_finished_at'])) : null;
+
+                $row['treatment_duration'] = $treatment_duration === 0 ? 1 : $treatment_duration;
                 $row['treatment_phases_count'] = $treatment_phases_count;
                 $row['treatment_complexity'] = $treatment_complexities_sum / $row['treatment_phases_count'];
                 $row['is_real'] = true;

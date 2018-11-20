@@ -9,7 +9,16 @@ class Result extends Model {
 
     protected $guarded = ['*'];
 
-    protected $fillable = [];
+    protected $fillable = [
+        'treatment_started_at',
+        'treatment_finished_at',
+        'treatment_duration',
+        'treatment_complexity',
+        'treatment_phases_count',
+        'patient_age',
+        'patient_gender',
+        'is_real'
+    ];
 
     public $timestamps = false;
 

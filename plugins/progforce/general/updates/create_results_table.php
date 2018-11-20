@@ -13,10 +13,10 @@ class CreateResultsTable extends Migration {
             $table->dateTime('treatment_started_at');
             $table->dateTime('treatment_finished_at')->nullable();
             $table->integer('treatment_duration')->nullable();
-            $table->integer('treatment_complexity');
+            $table->float   ('treatment_complexity');
             $table->integer('treatment_phases_count');
-            $table->integer('patient_age');
-            $table->integer('patient_gender');
+            $table->integer('patient_age')->nullable();
+            $table->float('patient_gender');
             $table->boolean('is_real');
         });
     }

@@ -19,6 +19,7 @@ class Regression extends ComponentBase {
     public function onRun() {
         $this->page['gender_values'] = ResultHelper::$GENDERS;
         $this->page['complexity_values'] = ResultHelper::$COMPLEXITIES;
+        $this->page['datafile_exist'] = file_exists(ResultHelper::getDataFilePath());
         $this->page['model_exist'] = file_exists(ResultHelper::getModelPath());
     }
 }

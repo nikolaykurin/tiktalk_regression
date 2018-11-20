@@ -33,7 +33,9 @@ class Results extends Controller {
         $data = ResultHelper::completeData($data);
         $data = ResultHelper::complementWithRandomData($data);
 
-        dd($data);
+        foreach ($data as $datum) {
+            Result::create($datum);
+        }
 
         return response('OK');
     }
@@ -52,7 +54,7 @@ class Results extends Controller {
             Result::all(self::$FIELDS)->toArray();
     }
 
-    public function make_txt(Request $request) {
+    public function make_data(Request $request) {
         $data = Result::whereNotNull('treatment_duration')->get(self::$FIELDS)->toArray();
 
         $str = '';
@@ -63,7 +65,9 @@ class Results extends Controller {
         $str .= implode(',', $keys) . PHP_EOL;
 
         for ($i = 1; $i < count($data); $i++) {
-            $str .= implode(',', array_values($data[$i])) . PHP_EOL;
+            $str .= implode(',', array_map(function ($item) {
+                    return is_null($item) ? 0 : $item;
+                }, array_values($data[$i]))) . PHP_EOL;
         }
 
         file_put_contents(ResultHelper::getDataFilePath(), $str);
