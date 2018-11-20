@@ -17,6 +17,7 @@ class CreateResultsTable extends Migration {
             $table->integer('treatment_phases_count');
             $table->integer('patient_age');
             $table->integer('patient_gender');
+            $table->boolean('is_real');
         });
     }
 

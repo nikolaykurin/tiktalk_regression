@@ -1,6 +1,6 @@
 <?php namespace Progforce\General\Classes\Helpers;
 
-class CountyHelper {
+class CountryHelper {
 
     public static function normalize($country) {
         switch ($country) {

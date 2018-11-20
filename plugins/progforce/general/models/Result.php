@@ -27,8 +27,7 @@ class Result extends Model {
         $result = new self();
         $result = ResultHelper::fill($result);
 
-//        dd($result);
-
         return $result;
     }
+
 }
