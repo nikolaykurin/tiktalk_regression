@@ -86,6 +86,10 @@ navigation:
                 label: 'progforce.general::lang.scoringalgorithms.menu_item'
                 url: progforce/general/scoringalgorithms
                 icon: icon-gear
+            results:
+                label: 'Results'
+                url: progforce/general/results
+                icon: icon-gear
 
     logs:
         label: 'progforce.general::lang.logs.menu_item'

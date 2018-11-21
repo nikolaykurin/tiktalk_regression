@@ -1,8 +1,19 @@
-# ===================================
-#  List Column Definitions
-# ===================================
-
 columns:
     id:
         label: ID
-        searchable: true
+    treatment_started_at:
+        label: Treatment Started At
+    treatment_finished_at:
+        label: Treatment Finished At
+    treatment_duration:
+        label: Treatment Duration
+    treatment_complexity:
+        label: Average Treatment Complexity
+    treatment_phases_count:
+        label: Treatment Phases Count
+    patient_age:
+        label: Patient Age
+    patient_gender_value:
+        label: Patient Gender
+    is_real:
+        label: Is Real

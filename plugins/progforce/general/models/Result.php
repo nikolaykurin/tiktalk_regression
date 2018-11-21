@@ -32,6 +32,10 @@ class Result extends Model {
     public $attachOne = [];
     public $attachMany = [];
 
+    public function getPatientGenderValueAttribute() {
+        return in_array($this->patient_gender, array_keys(ResultHelper::$GENDERS)) ? ucfirst(ResultHelper::$GENDERS[$this->patient_gender]) : 'N/A';
+    }
+
     public static function generate() {
         $result = new self();
         $result = ResultHelper::fill($result);
