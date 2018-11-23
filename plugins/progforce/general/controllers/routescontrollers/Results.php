@@ -31,7 +31,10 @@ class Results extends Controller {
         $db_data = ResultHelper::getData();
         $data = ResultHelper::parseData($db_data);
         $data = ResultHelper::completeData($data);
-        $data = ResultHelper::complementWithRandomData($data);
+
+        if (count($data) < ResultHelper::$MIN_DATA_COUNT) {
+            $data = ResultHelper::complementWithRandomData($data);
+        }
 
         foreach ($data as $datum) {
             Result::create($datum);
