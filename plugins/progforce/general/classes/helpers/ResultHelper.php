@@ -8,6 +8,8 @@ use Exception;
 
 class ResultHelper {
 
+    public static $MIN_DATA_COUNT = 100;
+
     public static $MIN_ITERATIONS_COUNT = 1000;
     public static $MAX_ITERATIONS_COUNT = 10000;
 
