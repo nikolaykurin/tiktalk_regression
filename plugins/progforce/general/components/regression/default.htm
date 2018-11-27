@@ -52,7 +52,10 @@
     <hr/>
 
     <div>
-        Predicted Treatment End Date: <b><span id="predicted"></span></b>
+        Predicted Days: <b><span id="predicted_days"></span></b>
+    </div>
+    <div>
+        Predicted Treatment End Date: <b><span id="predicted_date"></span></b>
     </div>
 </div>
 
@@ -82,9 +85,8 @@
                 processData: false,
                 timeout: 0,
                 success: (response) => {
-                    const date = $('#date').val();
-
-                    $('#predicted').text(moment(date).add(response.result, 'days').format('YYYY-MM-DD'));
+                    setDays(response.result);
+                    setDate(response.result);
                 }
             }).fail((jqXHR, textStatus, errorThrown) => {
                 console.log(jqXHR, textStatus, errorThrown);
@@ -119,5 +121,15 @@
 
         });
     });
+
+    function setDays(result) {
+        $('#predicted_days').text(result);
+    }
+
+    function setDate(result) {
+        const date = $('#date').val();
+
+        $('#predicted_date').text(moment(date).add(result, 'days').format('YYYY-MM-DD'));
+    }
 
 </script>
