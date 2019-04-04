@@ -1,10 +1,7 @@
-<?php
-
-
-namespace Progforce\General\Classes\Helpers;
-
+<?php namespace Progforce\General\Classes\Helpers;
 
 use Progforce\General\Models\IssueCodes;
+use Illuminate\Support\Facades\Log;
 
 class IssueHelper
 {
@@ -17,10 +14,16 @@ class IssueHelper
 
     /**
      * @param $issueCode
+     * @param array $logData
      * @return array
      */
-    public static function getIssue($issueCode) {
+    public static function getIssue($issueCode, $logData = []) {
         $issue = IssueCodes::getIssueByCode($issueCode);
+
+        if (!empty($logData)) {
+            Log::debug(sprintf('%s [%s]', $issue->message, json_encode($logData)));
+        }
+
         return [
             'success' => false,
             'error_code' => $issue->issue_id,

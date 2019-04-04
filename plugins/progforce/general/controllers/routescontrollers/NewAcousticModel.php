@@ -2,7 +2,6 @@
 
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use Progforce\General\Classes\AcousticModelCreator;
 use Progforce\General\Classes\Helpers\AcousticModelHelper;
 use Exception;
@@ -21,7 +20,7 @@ class NewAcousticModel extends Controller {
         }
 
         $language = $request->input('lang');
-        $debug = Config::get('training.DEBUG');
+        $debug = config('training.DEBUG');
 
         $path = PathHelper::getModelTempPath($language);
 

@@ -6,10 +6,13 @@ use Progforce\User\Models\User;
 use Symfony\Component\Process\Process;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use RecursiveIteratorIterator;
+use RecursiveDirectoryIterator;
+use FilesystemIterator;
 
 // TODO: simplify all methods with `mkdir`!
-class PathHelper
-{
+class PathHelper {
+
     public static $BASE_USERS_PATH = 'app/users';
     public static $BASE_LANGUAGE_PATH = 'app/languages';
     public static $BASE_TEMP_PATH = 'temp';
@@ -205,5 +208,18 @@ class PathHelper
         return array_filter($scan, function ($item) use ($dir) {
             return !in_array($item, [ '.', '..' ]) && is_dir($dir . DIRECTORY_SEPARATOR . $item);
         });
+    }
+
+    public static function getPathSize($path) {
+        $bytes = 0;
+        $path = realpath($path);
+
+        if ($path !== false && $path !='' && file_exists($path)) {
+            foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)) as $object) {
+                $bytes += $object->getSize();
+            }
+        }
+
+        return $bytes;
     }
 }

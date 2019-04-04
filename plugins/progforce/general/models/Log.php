@@ -1,22 +1,21 @@
 <?php namespace Progforce\General\Models;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
 use Model;
-use October\Rain\Database\Traits\Validation;
 use Progforce\User\Models\User;
 
 class Log extends Model
 {
-    use Validation;
-
     public $table = 'progforce_general_logs';
 
-    public $timestamps = false;
-
-    public $rules = [ ];
+    protected $dates = [
+        'datetime'
+    ];
 
     protected $fillable = [
         'user_id',
+        'session_id',
         'datetime',
         'action',
         'data'
@@ -25,8 +24,15 @@ class Log extends Model
     public $belongsTo = [
         'user' => [
             User::class
+        ],
+        'session' => [
+            Session::class
         ]
     ];
+
+    public function scopeIsOld($query) {
+        return $query->where('created_at', '<=', Carbon::now()->subSeconds(Session::$TTL)->format('Y-m-d H:i:s'));
+    }
 
     public function getActionOptions() {
         return array_flip(Config::get('log.actions'));

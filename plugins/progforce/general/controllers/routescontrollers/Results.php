@@ -46,7 +46,7 @@ class Results extends Controller {
     public function clear(Request $request) {
         Result::truncate();
 
-        return response('ok');
+        return response('OK');
     }
 
     public function get(Request $request) {

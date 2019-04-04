@@ -59,7 +59,8 @@ class Words extends BaseWords
         if (!$request->has('codes') || empty($codes = $request->input('codes'))) {
             return response('\'codes\' field requires');
         }
-
+traceLog('---codes---');
+traceLog($codes);
         if (!$request->has('lang_id')) {
             return response('Language Id field requires');
         }

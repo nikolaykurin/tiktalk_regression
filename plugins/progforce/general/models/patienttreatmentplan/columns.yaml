@@ -40,3 +40,6 @@ columns:
         sortable: true
     sound_id:
         label: Sound Id
+    is_multisound:
+        label: progforce.general::lang.patienttreatmentplans.is_multisound
+        type: switch

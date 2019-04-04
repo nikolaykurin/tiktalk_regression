@@ -41,10 +41,24 @@ class Devices extends Controller
             return ResponseHelper::get400('There are no users attached to this device!');
         }
 
+        $count = [];
+
+        $languageCodes = array_map(function ($item) use (&$count) {
+            $code = explode('-', $item)[0];
+            $count[$code] = 0;
+            return $code;
+        }, array_column(config('languages'), 'code', 'id'));
+
+        foreach ($users as $user) {
+            $langCode = $languageCodes[$user['language_id']];
+            $count[$langCode] = $count[$langCode] + 1;
+        }
+
         $params = [
             'is_white_label' => $device->is_white_label, 
             'white_label' => $device->getWhiteLabel(), 
-            'users' => $users
+            'users' => $users,
+            'count' => $count
         ];
         return ResponseHelper::get200($params, true);
     }

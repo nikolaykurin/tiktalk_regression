@@ -14,7 +14,7 @@ class GenerateAcousticModel extends Command {
 
     protected $name = 'progforce:generate-am';
 
-    protected $description = 'Generate Accoustic Model from existed data array';
+    protected $description = 'Generate Acoustic Model from existed data array';
 
     public function handle() {
         $start = microtime(true);
@@ -84,8 +84,7 @@ class GenerateAcousticModel extends Command {
         $this->output->writeln(sprintf('Execution time: %dm (%ds)', $total / 60, $total));
     }
 
-    protected function getOptions()
-    {
+    protected function getOptions() {
         return [
             [ 'lang', null, InputOption::VALUE_REQUIRED, 'Language code', null ],
             [ 'file', null, InputOption::VALUE_REQUIRED, 'File name', null ],

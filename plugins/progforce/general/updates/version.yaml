@@ -123,5 +123,26 @@
     - 'Add active_version column to devices table'
     - add_active_version_col_to_progforce_general_registered_devices_table.php
 1.0.54:
+    - 'Update Reports - remove UNSIGNED for result_id column'
+    - update_progforce_general_reports_table.php
+1.0.55:
+    - 'Update Patient Treatment Plans - add is_multisound'
+    - update_progforce_general_patient_treatment_plans_table.php
+1.0.56:
+    - 'Create Parents table'
+    - create_parents_table.php
+1.0.57:
+    - 'Create Sessions table'
+    - create_sessions_table.php
+1.0.58:
+    - 'Add timestamps to Logs and Sessions tables'
+    - add_timestamps_to_logs_and_sessions_tables.php
+1.0.59:
+    - 'Add session_id to Logs table'
+    - add_session_id_to_logs_table.php
+1.0.60:
+    - 'Update Treatment Phase table'
+    - update_progforce_general_treatment_phases_table.php
+1.0.61:
     - 'Create Results table'
     - create_results_table.php

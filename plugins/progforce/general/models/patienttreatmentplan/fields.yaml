@@ -33,3 +33,6 @@ fields:
     phases@update:
         type: partial
         path: $/progforce/general/controllers/patienttreatmentplans/_relation_phases.htm
+    is_multisound:
+        label: progforce.general::lang.patienttreatmentplans.is_multisound
+        type: switch

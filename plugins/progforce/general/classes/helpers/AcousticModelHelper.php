@@ -19,6 +19,7 @@ use Exception;
 class AcousticModelHelper {
 
     public static $DATA_FILE = 'data.csv';
+    public static $CONFIG_FILE = 'sphinx_train.cfg';
     public static $DATA_FILE_TYPE = 'Csv';
 
     public static $EMPTY_STRING_DELIMITER = '';
@@ -379,6 +380,7 @@ class AcousticModelHelper {
         }
 
         $filePath = $path . DIRECTORY_SEPARATOR . self::$DATA_FILE;
+        $configPath = $path . DIRECTORY_SEPARATOR . self::$CONFIG_FILE;
 
         if (!file_exists($filePath)) {
             throw new Exception('Main data file not found!');
@@ -441,12 +443,10 @@ class AcousticModelHelper {
                 }
 
                 foreach ($fileItems as $file) {
-                    $explodedFileName = explode(self::$EXTENSION_DELIMITER , $file);
-                    $fileNameWithoutExtension = $explodedFileName[0];
-                    $fileExtension = $explodedFileName[1];
+                    $fileNameWithoutExtension = FileHelper::getFileNameWithoutExtension($file);
 
                     $oldFilePath = $path . DIRECTORY_SEPARATOR . $relativePath . $file;
-                    $newFilePath = $wavesPath . DIRECTORY_SEPARATOR . $fileNameWithoutExtension . '.' . $wavesExtension;
+                    $newFilePath = $wavesPath . DIRECTORY_SEPARATOR . $file;
 
                     if (!file_exists($oldFilePath)) {
                         $oldFilePath = str_replace(strtoupper(self::$WORD_PREFIX), ucfirst(self::$WORD_PREFIX), $oldFilePath);
@@ -456,21 +456,16 @@ class AcousticModelHelper {
                         continue;
                     }
 
-                    if (file_exists($newFilePath)) {
-                        $fileNameWithoutExtension = $fileExtension . self::$UNDERSCORE_DELIMITER . $fileNameWithoutExtension;
-
-                        $newFilePath = $wavesPath . DIRECTORY_SEPARATOR . $fileNameWithoutExtension . '.' . $wavesExtension;
-                    }
-
-                    rename($oldFilePath, $newFilePath);
+//                    rename($oldFilePath, $newFilePath);
+                    copy($oldFilePath, $newFilePath);
 
                     $contentFileids_line = $fileNameWithoutExtension . PHP_EOL;
                     $contentTranscriptions_line = sprintf('<s> %s </s> (%s)%s', $word, $fileNameWithoutExtension, PHP_EOL);
 
                     $contentFileids_train .= $contentFileids_line;
                     $contentTranscriptions_train .= $contentTranscriptions_line;
-                    $contentFileids_test .= $index * $testPercent % 100 === 0 ? $contentFileids_line : '';
-                    $contentTranscriptions_test .= $index * $testPercent % 100 === 0 ? $contentTranscriptions_line : '';
+                    $contentFileids_test .= $index * $testPercent % 100 === 0 ? $contentFileids_line : self::$EMPTY_STRING_DELIMITER;
+                    $contentTranscriptions_test .= $index * $testPercent % 100 === 0 ? $contentTranscriptions_line : self::$EMPTY_STRING_DELIMITER;
 
                     $index++;
                 }
@@ -514,6 +509,10 @@ class AcousticModelHelper {
 
         file_put_contents(sprintf('%s/%s', $etcPath, sprintf('%s_test.fileids', $language)), $contentFileids_test);
         file_put_contents(sprintf('%s/%s', $etcPath, sprintf('%s_test.transcription', $language)), $contentTranscriptions_test);
+
+        if (file_exists($configPath)) {
+            rename($configPath, sprintf('%s/%s', $etcPath, 'config'));
+        }
     }
 
     public static function buildCSV($path, $language) {

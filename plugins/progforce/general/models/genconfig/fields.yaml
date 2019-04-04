@@ -6,6 +6,14 @@ tabs:
         activation_code:
             tab: General
             label: Activation Code
+        issue_not_enough_words_am:
+            tab: General
+            label: ISSUE NOT ENOUGH WORDS AM
+            type: number
+        issue_not_enough_words_level:
+            tab: General
+            label: ISSUE NOT ENOUGH WORDS LEVEL
+            type: number
         gui_en:
             tab: GUI EN
             type: codeeditor
@@ -18,3 +26,34 @@ tabs:
             fontSize: 16
             wrapWords: false
             size: giant
+        version_prod:
+            label: Prod
+            tab: Versions
+            type: text
+        version_alpha:
+            label: Alpha
+            tab: Versions
+            type: text
+        version_internal:
+            label: Internal
+            tab: Versions
+            type: text
+        version_test:
+            label: Test
+            tab: Versions
+            type: text
+        sphinx_train:
+            label: SphinxTrainConfig
+            tab: Sphinx
+            type: codeeditor
+            fontSize: 16
+            wrapWords: false
+            size: giant
+        mail_from:
+            label: Sender E-Mail
+            tab: Mail
+            type: text
+        mail_to:
+            label: Recipient E-Mail
+            tab: Mail
+            type: text

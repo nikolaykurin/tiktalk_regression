@@ -102,5 +102,4 @@ class GenConfig extends Model {
         return $res;
     }
 
-
 }

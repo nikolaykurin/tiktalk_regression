@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 use Progforce\General\Classes\Helpers\PathHelper;
 use Exception;
+use Progforce\General\Models\GenConfig;
 
 // TODO: constants to config/env file
 class AcousticModelCreator {
@@ -65,7 +66,7 @@ class AcousticModelCreator {
 
             $this->setupScripts();
 
-            $this->setupConfig();
+            $this->setupConfigFromBackend();
 
             $this->train();
 
@@ -79,6 +80,7 @@ class AcousticModelCreator {
         }
     }
 
+    // http://jrmeyer.github.io/asr/2016/01/09/Installing-CMU-Sphinx-on-Ubuntu.html
     public function checkDependencies() {
         if (
             !is_file(Config::get('paths.sphinx_lm_convert'))
@@ -132,50 +134,18 @@ class AcousticModelCreator {
         Log::debug($setupScriptLog);
     }
 
-    public function setupConfig() {
-        $CFG_WAVFILE_EXTENSION = Config::get('training.CFG_WAVFILE_EXTENSION');
-        $CFG_WAVFILE_TYPE = Config::get('training.CFG_WAVFILE_TYPE');
-        $CFG_N_TIED_STATES = Config::get('training.CFG_N_TIED_STATES');
-        $DEC_CFG_NPART = Config::get('training.DEC_CFG_NPART');
-        $CFG_CD_TRAIN = Config::get('training.CFG_CD_TRAIN');
-        $CFG_FORCEDALIGN = Config::get('training.CFG_FORCEDALIGN');
-        $CFG_VTLN = Config::get('training.CFG_VTLN');
-
+    public function setupConfigFromBackend() {
         $configFile = sprintf('%s/etc/sphinx_train.cfg', $this->tmpPath);
+        $content = GenConfig::get()->sphinx_train;
 
         if (!$configFile) {
-            throw new Exception('Config file wasn\'t create, looks like something went wrong!');
+            throw new Exception('Config file wasn\'t created, looks like something went wrong!');
+        }
+        if (!$content) {
+            throw new Exception('Fill Sphinx Config in Backend!');
         }
 
-        $content = file_get_contents($configFile);
-        $search = [
-            '$CFG_WAVFILE_EXTENSION = \'wav\';',
-            '$CFG_WAVFILE_TYPE = \'mswav\';',
-            '$CFG_N_TIED_STATES = 1000;',
-            '$CFG_QUEUE_TYPE = "Queue";',
-            '$DEC_CFG_NPART = 1;',
-            '$CFG_CD_TRAIN = \'yes\';',
-            '$CFG_LANGUAGEMODEL  = "$CFG_LIST_DIR/$CFG_DB_NAME.lm.DMP";',
-            '$DEC_CFG_LANGUAGEMODEL  = "$CFG_BASE_DIR/etc/${CFG_DB_NAME}.lm.DMP";',
-            '$DEC_CFG_MODEL_NAME = "$CFG_EXPTNAME.cd_${CFG_DIRLABEL}_${CFG_N_TIED_STATES}";',
-            '$CFG_FORCEDALIGN = \'no\';',
-            '$CFG_VTLN = \'no\';',
-        ];
-        $replace = [
-            sprintf('$CFG_WAVFILE_EXTENSION = \'%s\';', $CFG_WAVFILE_EXTENSION),
-            sprintf('$CFG_WAVFILE_TYPE = \'%s\';', $CFG_WAVFILE_TYPE),
-            sprintf('$CFG_N_TIED_STATES = %s;', $CFG_N_TIED_STATES),
-            '$CFG_QUEUE_TYPE = "Queue::POSIX";',
-            sprintf('$DEC_CFG_NPART = %s;', $DEC_CFG_NPART),
-            sprintf('$CFG_CD_TRAIN = \'%s\';', $CFG_CD_TRAIN),
-            '$CFG_LANGUAGEMODEL  = "$CFG_LIST_DIR/$CFG_DB_NAME.lm.bin";',
-            '$DEC_CFG_LANGUAGEMODEL  = "$CFG_BASE_DIR/etc/${CFG_DB_NAME}.lm.bin";',
-            '$DEC_CFG_MODEL_NAME = "$CFG_EXPTNAME.ci_cont";',
-            sprintf('$CFG_FORCEDALIGN = \'%s\';', $CFG_FORCEDALIGN),
-            sprintf('$CFG_VTLN = \'%s\';', $CFG_VTLN),
-        ];
-
-        file_put_contents($configFile, str_replace($search, $replace, $content));
+        file_put_contents($configFile, $content);
     }
 
     public function train() {

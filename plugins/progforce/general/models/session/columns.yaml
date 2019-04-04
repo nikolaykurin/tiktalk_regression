@@ -1,0 +1,17 @@
+columns:
+    id:
+        label: progforce.general::lang.sessions.id
+        searchable: true
+    user_id:
+        label: progforce.general::lang.sessions.user_id
+        searchable: true
+        relation: user
+        select: first_name
+    datetime_start:
+        label: progforce.general::lang.sessions.datetime_start
+        searchable: true
+        type: datetime
+    datetime_end:
+        label: progforce.general::lang.sessions.datetime_end
+        searchable: true
+        type: datetime

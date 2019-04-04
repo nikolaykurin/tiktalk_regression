@@ -21,4 +21,10 @@ class WordsHelper {
         return $model::whereIn('word_id', $words)->distinct()->get(['word', 'word_id', 'transcription1']);
     }
 
+    public static function getWordIdsForSounds($table, $soundIds) {
+        $wordsTable = '\\Progforce\\General\\Models\\' . $table;
+
+        return $wordsTable::distinct()->whereIn('sound_id', $soundIds)->pluck('word_id')->toArray();
+    }
+
 }

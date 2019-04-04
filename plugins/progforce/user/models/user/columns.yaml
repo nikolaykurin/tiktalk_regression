@@ -48,4 +48,7 @@ columns:
         label: progforce.user::lang.user.registered_device
         relation: registered_device
         select: device_id
-
+    parent:
+        label: progforce.user::lang.user.parent
+        relation: parent
+        select: username

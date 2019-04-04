@@ -30,9 +30,10 @@ class PatientTreatmentPlanHelper
 
     /**
      * @param int $statusValue
+     * @param int|null $session_id
      * @return mixed
      */
-    public function updatePlan($statusValue = 3) {
+    public function updatePlan($statusValue = 3, $session_id = null) {
         $logActions = Config::get('log.actions');
         $isSet = $this->setCurrentTreatmentPhase($this->plan);
         if ($isSet) {
@@ -45,7 +46,7 @@ class PatientTreatmentPlanHelper
                     update($vals);
 
             // complete status
-            if ($statusValue === 3 && $this->nextPhase && $this->nextPhase->phase_status_id) {
+            if ($statusValue === 3 && $this->nextPhase) {
                 TreatmentPlanPhase::
                     where('id', $this->nextPhase->plan_phase_id)->
                     update(['phase_status_id' => 2]);
@@ -70,6 +71,7 @@ class PatientTreatmentPlanHelper
             $isSet = $this->setCurrentTreatmentPhase($this->plan);
             Log::create([
                 'user_id' => $this->userID,
+                'session_id' => $session_id,
                 'datetime' => date('Y-m-d H:i:s'),
                 'action' => $logActions['phase_change'],
                 'data' => json_encode([

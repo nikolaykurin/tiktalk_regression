@@ -4,10 +4,13 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Input;
+use Progforce\General\Classes\Helpers\ConfigHelper;
 use Progforce\General\Classes\Helpers\PathHelper;
+use Progforce\General\Classes\Helpers\ResponseHelper;
+use Progforce\General\Models\GenConfig;
 
-class Versions extends Controller
-{
+class Versions extends Controller {
+
     public function fileUpload() {
         $file = Input::file('file');
         $filename = $file->getClientOriginalName();
@@ -84,4 +87,21 @@ class Versions extends Controller
 
         return response()->download($file);
     }
+
+    public function getVersions(Request $request) {
+        $version = $request->input('version');
+
+        if (is_null($version)) {
+            return ResponseHelper::get400('"version" parameter required!');
+        }
+
+        if (!in_array($version, config('versions'))) {
+            return ResponseHelper::get400('wrong "version" parameter value!');
+        }
+
+        $config = GenConfig::get();
+
+        return $config->{ConfigHelper::getVersionKey($version)};
+    }
+
 }

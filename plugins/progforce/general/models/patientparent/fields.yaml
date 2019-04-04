@@ -1,0 +1,10 @@
+fields:
+    username:
+        label: 'progforce.general::lang.parents.username'
+        type: text
+    password:
+        label: 'progforce.general::lang.parents.password'
+        type: password
+    email:
+        label: 'progforce.general::lang.parents.email'
+        type: text

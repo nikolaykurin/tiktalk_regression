@@ -95,3 +95,7 @@
 2.0.10:
     - 'Add user birth date'
     - users_add_birth_date_field.php
+2.0.11:
+    - 'Add parent_id to Users table and email to SLPUsers table'
+    - users_add_parent_id_field.php
+    - slp_users_add_email_field.php

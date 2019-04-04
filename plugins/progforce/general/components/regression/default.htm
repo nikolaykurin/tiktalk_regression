@@ -18,7 +18,7 @@
         <form>
             <div class="form-group">
                 <label for="age">Age</label>
-                <input type="number" class="form-control" id="age" value="4" step="1">
+                <input type="number" class="form-control" id="age" value="12" step="1">
             </div>
             <div class="form-group">
                 <label for="gender">Gender</label>
@@ -44,8 +44,14 @@
                 <label for="date">Treatment Start Date</label>
                 <input id="date" class="form-control" data-provide="datepicker" data-date-format="yyyy-mm-dd">
             </div>
+            <div class="form-group">
+                <label for="duration">Duration Per Day (Minutes)</label>
+                <input type="number" class="form-control" id="duration" value="15" step="1">
+            </div>
 
-            <button id="predict" type="button" class="btn btn-primary" {% if not model_exist %} disabled="disabled" {% endif %}>Predict</button>
+            <button id="predict" type="button" class="btn btn-primary" {% if not model_exist %} disabled="disabled" {% endif %}>
+                Predict
+            </button>
         </form>
     </div>
 
@@ -72,6 +78,8 @@
 
             const data = new FormData();
 
+            const duration = $('#duration').val();
+
             data.set('patient_age', $('#age').val());
             data.set('patient_gender', $('#gender').val());
             data.set('treatment_complexity', $('#complexity').val());
@@ -85,8 +93,10 @@
                 processData: false,
                 timeout: 0,
                 success: (response) => {
-                    setDays(response.result);
-                    setDate(response.result);
+                    const resultInDays = parseInt(response.result / duration);
+
+                    setDays(resultInDays);
+                    setDate(resultInDays);
                 }
             }).fail((jqXHR, textStatus, errorThrown) => {
                 console.log(jqXHR, textStatus, errorThrown);

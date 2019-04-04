@@ -42,6 +42,11 @@ fields:
         type: dropdown
         emptyOption: 'Not Selected'
         span: auto
+    parent:
+        label: progforce.user::lang.user.parent
+        type: relation
+        select: username
+        span: auto
 
     developer_mode:
         label: progforce.user::lang.user.developer_mode

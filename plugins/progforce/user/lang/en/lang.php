@@ -127,6 +127,7 @@ return [
         'first_name' => 'First name',
         'last_name' => 'Last name',
         'registered_device' => 'Device ID',
+        'parent' => 'Parent',
         'slp' => 'SLP',
         'slp_first_name' => 'SLP First name',
         'age' => 'Age',

@@ -80,19 +80,19 @@ class WordBase extends Model
         if ($phase->complexity_id != 3 && $phase->utterance_type_id != 2) {
             $qry = $qry->where('complexity_id', $phase->complexity_id);
         }
-
         if ($phase->utterance_type_id) { 
-            $qry =  $qry->where('utterance_type_id', $phase->utterance_type_id); 
+            $qry = $qry->where('utterance_type_id', $phase->utterance_type_id);
 
             if ($phase->utterance_type_id == 2) { // sentences
-                if ($phase->id == 10) { 
-                    $qry =  $qry->where('sound_occurrences', '<=', 2); 
-                } elseif ($phase->id == 11) {
-                    $qry =  $qry->where('sound_occurrences', '>' ,2); 
+                $soundOccurrences = strtolower(trim($phase->sound_occurrences));
+                if (preg_match('/([><=]+)([0-9]+)/', $soundOccurrences, $regs)) {
+                    $condition = $regs[1];
+                    $value = $regs[2];
+
+                    $qry = $qry->where('sound_occurrences', $condition, $value);
                 }
             }
         }
-
     }
 
     private function setAssetsSizes(&$words) {

@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Patient Parent
+
+# Model Form Field configuration
+form: $/progforce/general/models/patientparent/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\PatientParent
+
+# Default redirect location
+defaultRedirect: progforce/general/patientparents
+
+# Create page
+create:
+    title: Create Patient Parent
+    redirect: progforce/general/patientparents/update/:id
+    redirectClose: progforce/general/patientparents
+
+# Update page
+update:
+    title: Edit Patient Parent
+    redirect: progforce/general/patientparents
+    redirectClose: progforce/general/patientparents
+
+# Preview page
+preview:
+    title: Preview Patient Parent

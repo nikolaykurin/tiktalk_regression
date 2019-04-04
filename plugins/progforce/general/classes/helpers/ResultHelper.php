@@ -100,7 +100,7 @@ class ResultHelper {
         $started_at = Carbon::createFromFormat('Y-m-d H:i:s', $result->treatment_started_at);
         $finished_at = $result->treatment_finished_at ? Carbon::createFromFormat('Y-m-d H:i:s', $result->treatment_finished_at) : null;
 
-        $result->treatment_duration = $finished_at ? $finished_at->diffInDays($started_at) : null;
+        $result->treatment_duration = $finished_at ? $finished_at->diffInDays($started_at) * rand(5, 30) : null;
 
         return $result;
     }
@@ -136,29 +136,46 @@ class ResultHelper {
     }
 
     public static function getData() {
-        return User::with([
-            'patient_treatment_plan' => function ($query) {
-                $query->whereHas('phases')->with([
-                    'phases' => function ($query) {
-                        $query->get([ 'complexity_id', 'phase_status_date' ]);
-                    }
-                ])->get([ 'id', 'user_id', 'created_at' ]);
-            },
-            'country' => function ($query) {
-                $query->get([ 'id', 'description' ]);
-            }
-        ])->get([ 'id', 'birth_date', 'first_name', 'country_id' ])->toArray();
+        return User::whereHas('sessions')
+            ->with([
+                'patient_treatment_plan' => function ($query) {
+                    $query
+                        ->whereHas('phases')
+                        ->with([
+                            'phases' => function ($query) {
+                                $query->get([ 'complexity_id', 'phase_status_date' ]);
+                            }
+                        ])
+                        ->get([ 'id', 'user_id', 'created_at' ]);
+                },
+                'country' => function ($query) {
+                    $query
+                        ->get([ 'id', 'description' ]);
+                },
+                'sessions' => function ($query) {
+                    $query
+                        ->get([ 'id', 'user_id', 'datetime_start', 'datetime_end' ]);
+                }
+            ])->get([ 'id', 'birth_date', 'first_name', 'country_id' ])->toArray();
     }
 
     public static function parseData($data) {
         $result = [];
         foreach ($data as $datum) {
+            $treatment_duration = 0;
+
+            foreach ($datum['sessions'] as $session) {
+                $treatment_duration += $session['datetime_end'] ? Carbon::createFromFormat('Y-m-d H:i:s', $session['datetime_start'])->diffInMinutes(Carbon::createFromFormat('Y-m-d H:i:s', $session['datetime_end'])) : 0;
+            }
+
+            $avg_treatment_duration = $treatment_duration / count($datum['patient_treatment_plan']);
+
             foreach ($datum['patient_treatment_plan'] as $item) {
                 $row = [];
 
                 $gender = null;
                 try {
-                    $gender = Genderize::name($datum['first_name'])->country(CountryHelper::normalize($datum['country']['description']))->get()->result[0]->gender;
+//                    $gender = Genderize::name($datum['first_name'])->country(CountryHelper::normalize($datum['country']['description']))->get()->result[0]->gender;
                 } catch (Exception $exception) {
                     //
                 }
@@ -183,9 +200,9 @@ class ResultHelper {
                 $row['treatment_started_at'] = $item['created_at'];
                 $row['treatment_finished_at'] = $treatment_finished_at ? Carbon::createFromFormat('Y-m-d', $treatment_finished_at)->format('Y-m-d H:i:s') : null;
 
-                $treatment_duration = $row['treatment_finished_at'] ? Carbon::createFromFormat('Y-m-d H:i:s', $row['treatment_started_at'])->diffInDays(Carbon::createFromFormat('Y-m-d H:i:s', $row['treatment_finished_at'])) : null;
+//                $treatment_duration = $row['treatment_finished_at'] ? Carbon::createFromFormat('Y-m-d H:i:s', $row['treatment_started_at'])->diffInDays(Carbon::createFromFormat('Y-m-d H:i:s', $row['treatment_finished_at'])) : null;
 
-                $row['treatment_duration'] = $treatment_duration === 0 ? 1 : $treatment_duration;
+                $row['treatment_duration'] = $avg_treatment_duration === 0 ? 1 : $avg_treatment_duration;
                 $row['treatment_phases_count'] = $treatment_phases_count;
                 $row['treatment_complexity'] = $treatment_complexities_sum / $row['treatment_phases_count'];
                 $row['is_real'] = true;

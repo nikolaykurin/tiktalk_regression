@@ -37,6 +37,7 @@ Route::get('/download_apk', 'Progforce\General\Controllers\RoutesControllers\And
 Route::get('/download_apk_debug', 'Progforce\General\Controllers\RoutesControllers\Android@downloadDebugApk');
 Route::post('/upload_game', 'Progforce\General\Controllers\RoutesControllers\Android@uploadGameApk');
 Route::get('/download_game', 'Progforce\General\Controllers\RoutesControllers\Android@downloadGameApk');
+Route::get('/privacy', 'Progforce\General\Controllers\RoutesControllers\Android@downloadMobilePrivacyPolicy');
 
 // Gen Settings
 Route::get('/get_activation_code', 'Progforce\General\Controllers\RoutesControllers\GenSettings@getActivationCode');
@@ -169,3 +170,11 @@ Route::get('/media/download', 'Progforce\General\Controllers\RoutesControllers\M
 
 Route::get('/dictionaries/status', 'Progforce\General\Controllers\RoutesControllers\DictionariesStatus@get');
 Route::get('/dictionaries/build', 'Progforce\General\Controllers\RoutesControllers\DictionariesStatus@build');
+
+Route::prefix('versions')->group(function () {
+    Route::get('get', 'Progforce\General\Controllers\RoutesControllers\Versions@getVersions');
+});
+
+Route::get('/patient/info', 'Progforce\General\Controllers\RoutesControllers\PatientInfo@get');
+Route::get('/patient/mail', 'Progforce\General\Controllers\RoutesControllers\PatientInfo@mail');
+

@@ -78,18 +78,30 @@ class PatientTreatmentPlan extends Model
 
     private static function getByUserQry($userId) {
         return self::from('progforce_general_patient_treatment_plans as p')->
-            select('p.id', 'p.user_id', 'p.protocol_sequence', 'p.sound_id', 's.sound', 'p.protocol_status')->
+            select(
+                'p.id',
+                'p.user_id',
+                'p.protocol_sequence',
+                'p.sound_id',
+                's.sound',
+                'p.protocol_status',
+                'p.is_multisound'
+            )->
             leftJoin('progforce_general_treatment_sounds as s', 's.id', '=', 'sound_id')->
             whereIn('p.protocol_status', [1,2])->
             where('p.user_id', $userId);
     }
 
     public static function getFirstForUser($userId) {
-        return self::getByUserQry($userId)->first();
+        return self::getByUserQry($userId)->orderBy('protocol_sequence')->first();
     }
 
     public static function getAllByUser($userId) {
         return self::getByUserQry($userId)->orderBy('protocol_sequence')->get();
+    }
+
+    public static function getAllNextByUser($userId, $currentPlanId) {
+        return self::getByUserQry($userId)->where('p.id', '!=', $currentPlanId)->get();
     }
 
     public function beforeSave() {
@@ -106,9 +118,26 @@ class PatientTreatmentPlan extends Model
             throw new \ValidationException(['protocol_sequence' =>
                 'Protocol Sequence should be unique per user']);
         }
+    }
 
-  //  if ($this->sound !== 'any') {
-   //         return;
-  //      }
+    /**
+     * Returns value based on active or not active plan status (protocol_sequence and protocol_status combination)
+     * @return bool
+     */
+    public function isStatusChangeable() {
+        if ($this->protocol_status === 3) {
+            return true;
+        }
+
+        $isLowestSequenceSound = $this
+            ->user
+            ->patient_treatment_plan()
+            ->where('sound_id', $this->sound_id)
+            ->orderBy('protocol_sequence')
+            ->first()
+            ->protocol_sequence === $this->protocol_sequence;
+        $isActiveStatus = in_array($this->protocol_status, [ 1, 2 ]);
+
+        return $isLowestSequenceSound && $isActiveStatus;
     }
 }

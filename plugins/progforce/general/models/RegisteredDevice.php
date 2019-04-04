@@ -27,10 +27,16 @@ class RegisteredDevice extends Model
         'users' => User::class
     ];
 
+    public function beforeCreate() {
+        if (empty($this->attributes['mixed_id'])) {
+            $this->attributes['mixed_id'] = $this->attributes['device_id'];
+        }
+    }
+
     public static function getList() {
         $res = [];
-        $codes = Config::get('tiktalk.device_codes');;
         $devices = RegisteredDevice::get();
+        $codes = Config::get('tiktalk.device_codes');
         foreach ($devices as $device) {
             foreach ($codes as $code) {
                 $key =  $code . '_id';

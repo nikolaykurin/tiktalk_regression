@@ -75,6 +75,7 @@
         'protocol_sequence' => 'Protocol Sequence',
         'protocol_status' => 'Protocol Status',
         'sound' => 'Sound',
+        'is_multisound' => 'Words with Multiple Sounds'
     ],
     'treatmentphases' => [
         'menu_item' => 'Treatment Phases',
@@ -99,7 +100,7 @@
     'registereddevices' => [
         'menu_item' => 'Registered Devices',
         'id' => 'ID',
-        'device_id' => 'IMEI'
+        'device_id' => 'Mixed ID'
     ],
     'scoringalgorithms' => [
         'menu_item' => 'Scoring Algorithms',
@@ -115,6 +116,20 @@
         'datetime' => 'Date & Time',
         'action' => 'Action',
         'data' => 'Data'
+    ],
+    'parents' => [
+        'menu_item' => 'Parents',
+        'id' => 'ID',
+        'username' => 'Username',
+        'email' => 'Email',
+        'password' => 'Password'
+    ],
+    'sessions' => [
+        'menu_item' => 'Sessions',
+        'id' => 'ID',
+        'user_id' => 'Patient',
+        'datetime_start' => 'Start',
+        'datetime_end' => 'End'
     ],
     'progforce' => [
         'general::lang' => [

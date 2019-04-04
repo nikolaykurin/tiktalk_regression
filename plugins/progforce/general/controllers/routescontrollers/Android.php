@@ -4,6 +4,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Exception;
+use Progforce\General\Classes\Helpers\ResponseHelper;
 
 class Android extends Controller
 {
@@ -52,6 +53,16 @@ class Android extends Controller
 
         if  (!file_exists($filePath)) {
             return response('File not exists', 400);
+        }
+
+        return response()->download($filePath);
+    }
+
+    public function downloadMobilePrivacyPolicy() {
+        $filePath = sprintf('%s/%s/%s', base_path(), 'files', 'mobile-privacy-policy.doc');
+
+        if  (!file_exists($filePath)) {
+            return ResponseHelper::get400('File not exists');
         }
 
         return response()->download($filePath);

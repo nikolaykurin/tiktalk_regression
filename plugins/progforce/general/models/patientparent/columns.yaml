@@ -1,0 +1,10 @@
+columns:
+    id:
+        label: 'progforce.general::lang.parents.id'
+        searchable: true
+    username:
+        label: 'progforce.general::lang.parents.username'
+        searchable: true
+    email:
+        label: 'progforce.general::lang.parents.email'
+        searchable: true

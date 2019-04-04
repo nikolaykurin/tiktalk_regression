@@ -6,10 +6,12 @@ use October\Rain\Exception\ValidationException;
 use Progforce\General\Classes\Helpers\PathHelper;
 use Progforce\General\Models\Country;
 use Progforce\General\Models\LanguageConfiguration;
+use Progforce\General\Models\PatientParent;
 use Progforce\General\Models\PatientTreatmentPlan;
 use Progforce\General\Models\RegisteredDevice;
 use DateTime;
 use Carbon\Carbon;
+use Progforce\General\Models\Session;
 use Str;
 use Auth;
 use Mail;
@@ -50,7 +52,8 @@ class User extends UserBase implements Authenticatable
         'country' => Country::class,
         'language' => LanguageConfiguration::class,
         'slp' => SLP::class,
-        'registered_device' => RegisteredDevice::class
+        'registered_device' => RegisteredDevice::class,
+        'parent' => PatientParent::class
     ];
 
     public $attachOne = [
@@ -58,7 +61,8 @@ class User extends UserBase implements Authenticatable
     ];
 
     public $hasMany = [
-        'patient_treatment_plan' => PatientTreatmentPlan::class
+        'patient_treatment_plan' => PatientTreatmentPlan::class,
+        'sessions' => Session::class
     ];
 
     /**
@@ -90,6 +94,7 @@ class User extends UserBase implements Authenticatable
     ];
 
     public static $loginAttribute = null;
+
 
     public function getRegisteredDeviceText() {
         $res = '';
@@ -130,7 +135,7 @@ class User extends UserBase implements Authenticatable
     }
 
     public function beforeSave() {
-        if (key_exists('registered_device_id', $this->attributes)) {traceLog('save');
+        if (key_exists('registered_device_id', $this->attributes)) {
             $this->attributes['registered_device_id'] = (int) $this->attributes['registered_device_id'];
         }
     }
@@ -534,6 +539,10 @@ class User extends UserBase implements Authenticatable
     }
 
     public function hasModel() {
+        if (!$this->id) {
+            return false;
+        }
+
         return !PathHelper::checkDirectoryEmpty(PathHelper::getUserAbsoluteModelPathForLanguage($this->id));
     }
 

@@ -60,6 +60,6 @@ fields:
         span: left
     sound_occurrences:
         label: Sound Occurences
-        type: number
+        type: text
         comment: Leave blank for ANY
         span: right

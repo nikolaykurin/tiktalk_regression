@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Session
+
+# Model Form Field configuration
+form: $/progforce/general/models/session/fields.yaml
+
+# Model Class name
+modelClass: Progforce\General\Models\Session
+
+# Default redirect location
+defaultRedirect: progforce/general/sessions
+
+# Create page
+create:
+    title: Create Session
+    redirect: progforce/general/sessions/update/:id
+    redirectClose: progforce/general/sessions
+
+# Update page
+update:
+    title: Edit Session
+    redirect: progforce/general/sessions
+    redirectClose: progforce/general/sessions
+
+# Preview page
+preview:
+    title: Preview Session
