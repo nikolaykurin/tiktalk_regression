@@ -8,7 +8,7 @@ use Progforce\General\Models\Result;
 
 class Results extends Controller {
 
-    static $FIELDS = [ 'patient_age', 'patient_gender', 'treatment_complexity', 'treatment_phases_count', 'treatment_duration' ];
+    static $FIELDS = [ 'patient_age', 'treatment_complexity', 'treatment_phases_count', 'treatment_duration' ];
 
     static $SPACE_SEPARATOR = ' ';
 
@@ -88,11 +88,10 @@ class Results extends Controller {
 
     public function predict(Request $request) {
         $param_patient_age = $request->input('patient_age');
-        $param_patient_gender = $request->input('patient_gender');
         $treatment_complexity = $request->input('treatment_complexity');
         $treatment_phases_count = $request->input('treatment_phases_count');
 
-        $result = shell_exec(sprintf('Rscript %s %s %s %s %s', ResultHelper::getRPredictScriptPath(), $param_patient_age, $param_patient_gender, $treatment_complexity, $treatment_phases_count));
+        $result = shell_exec(sprintf('Rscript %s %s %s %s', ResultHelper::getRPredictScriptPath(), $param_patient_age, $treatment_complexity, $treatment_phases_count));
         $exploded_result = explode(self::$SPACE_SEPARATOR, $result);
 
         return response()->json([

@@ -13,7 +13,7 @@ ind <- sample(2, nrow(data), replace=TRUE, prob=c(0.9, 0.1))
 train <- data[ind==1,]
 test <- data[ind==2,]
 
-reg <- nls(treatment_duration ~ patient_age*a + patient_gender*b + treatment_complexity*c + treatment_phases_count*d, data=train, start=c(a=0,b=0,c=0,d=0))
+reg <- nls(treatment_duration ~ patient_age*a + treatment_complexity*b + treatment_phases_count*c, data=data, start=c(a=0,b=0,c=0))
 
 print(reg)
 
@@ -29,6 +29,6 @@ print(data.frame(test, treatment_duration_predicted=pred))
 err2 = sqrt(sum((test$treatment_duration - pred)^2))/length(pred)
 print(err2)
 
-newdata <- data.frame(patient_age=c(12,8,16,9),patient_gender=c(1,1,2,1),treatment_complexity=c(1,2,2,2),treatment_phases_count=c(1,5,2,1))
+newdata <- data.frame(patient_age=c(12,8,16,9),treatment_complexity=c(1,2,2,2),treatment_phases_count=c(1,5,2,1))
 newdata$treatment_duration <- predict(reg, newdata)
 print(newdata)
