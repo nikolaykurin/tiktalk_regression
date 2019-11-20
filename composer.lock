@@ -1488,7 +1488,7 @@
             "time": "2018-05-16T11:53:55+00:00"
         },
         {
-            "name": "jeremeamia/SuperClosure",
+            "name": "jeremeamia/superclosure",
             "version": "2.4.0",
             "source": {
                 "type": "git",
@@ -2196,6 +2196,170 @@
             "time": "2018-05-09T14:34:18+00:00"
         },
         {
+            "name": "markbaker/complex",
+            "version": "1.4.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MarkBaker/PHPComplex.git",
+                "reference": "1ea674a8308baf547cbcbd30c5fcd6d301b7c000"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MarkBaker/PHPComplex/zipball/1ea674a8308baf547cbcbd30c5fcd6d301b7c000",
+                "reference": "1ea674a8308baf547cbcbd30c5fcd6d301b7c000",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6.0|^7.0.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3",
+                "phpcompatibility/php-compatibility": "^8.0",
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phploc/phploc": "2.*",
+                "phpmd/phpmd": "2.*",
+                "phpunit/phpunit": "^4.8.35|^5.4.0",
+                "sebastian/phpcpd": "2.*",
+                "squizlabs/php_codesniffer": "^3.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Complex\\": "classes/src/"
+                },
+                "files": [
+                    "classes/src/functions/abs.php",
+                    "classes/src/functions/acos.php",
+                    "classes/src/functions/acosh.php",
+                    "classes/src/functions/acot.php",
+                    "classes/src/functions/acoth.php",
+                    "classes/src/functions/acsc.php",
+                    "classes/src/functions/acsch.php",
+                    "classes/src/functions/argument.php",
+                    "classes/src/functions/asec.php",
+                    "classes/src/functions/asech.php",
+                    "classes/src/functions/asin.php",
+                    "classes/src/functions/asinh.php",
+                    "classes/src/functions/atan.php",
+                    "classes/src/functions/atanh.php",
+                    "classes/src/functions/conjugate.php",
+                    "classes/src/functions/cos.php",
+                    "classes/src/functions/cosh.php",
+                    "classes/src/functions/cot.php",
+                    "classes/src/functions/coth.php",
+                    "classes/src/functions/csc.php",
+                    "classes/src/functions/csch.php",
+                    "classes/src/functions/exp.php",
+                    "classes/src/functions/inverse.php",
+                    "classes/src/functions/ln.php",
+                    "classes/src/functions/log2.php",
+                    "classes/src/functions/log10.php",
+                    "classes/src/functions/negative.php",
+                    "classes/src/functions/pow.php",
+                    "classes/src/functions/rho.php",
+                    "classes/src/functions/sec.php",
+                    "classes/src/functions/sech.php",
+                    "classes/src/functions/sin.php",
+                    "classes/src/functions/sinh.php",
+                    "classes/src/functions/sqrt.php",
+                    "classes/src/functions/tan.php",
+                    "classes/src/functions/tanh.php",
+                    "classes/src/functions/theta.php",
+                    "classes/src/operations/add.php",
+                    "classes/src/operations/subtract.php",
+                    "classes/src/operations/multiply.php",
+                    "classes/src/operations/divideby.php",
+                    "classes/src/operations/divideinto.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Baker",
+                    "email": "mark@lange.demon.co.uk"
+                }
+            ],
+            "description": "PHP Class for working with complex numbers",
+            "homepage": "https://github.com/MarkBaker/PHPComplex",
+            "keywords": [
+                "complex",
+                "mathematics"
+            ],
+            "time": "2018-10-13T23:28:42+00:00"
+        },
+        {
+            "name": "markbaker/matrix",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MarkBaker/PHPMatrix.git",
+                "reference": "5348c5a67e3b75cd209d70103f916a93b1f1ed21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MarkBaker/PHPMatrix/zipball/5348c5a67e3b75cd209d70103f916a93b1f1ed21",
+                "reference": "5348c5a67e3b75cd209d70103f916a93b1f1ed21",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6.0|^7.0.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "dev-master",
+                "phpcompatibility/php-compatibility": "dev-master",
+                "phploc/phploc": "^4",
+                "phpmd/phpmd": "dev-master",
+                "phpunit/phpunit": "^5.7",
+                "sebastian/phpcpd": "^3.0",
+                "squizlabs/php_codesniffer": "^3.0@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Matrix\\": "classes/src/"
+                },
+                "files": [
+                    "classes/src/functions/adjoint.php",
+                    "classes/src/functions/antidiagonal.php",
+                    "classes/src/functions/cofactors.php",
+                    "classes/src/functions/determinant.php",
+                    "classes/src/functions/diagonal.php",
+                    "classes/src/functions/identity.php",
+                    "classes/src/functions/inverse.php",
+                    "classes/src/functions/minors.php",
+                    "classes/src/functions/trace.php",
+                    "classes/src/functions/transpose.php",
+                    "classes/src/operations/add.php",
+                    "classes/src/operations/directsum.php",
+                    "classes/src/operations/subtract.php",
+                    "classes/src/operations/multiply.php",
+                    "classes/src/operations/divideby.php",
+                    "classes/src/operations/divideinto.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Baker",
+                    "email": "mark@lange.demon.co.uk"
+                }
+            ],
+            "description": "PHP Class for working with matrices",
+            "homepage": "https://github.com/MarkBaker/PHPMatrix",
+            "keywords": [
+                "mathematics",
+                "matrix",
+                "vector"
+            ],
+            "time": "2019-10-06T11:29:25+00:00"
+        },
+        {
             "name": "mashape/unirest-php",
             "version": "v3.0.4",
             "source": {
@@ -2621,12 +2785,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/octoberrain/backend.git",
-                "reference": "baed747d62e0f5ca13221a17a78f58ba012189a3"
+                "reference": "d84b8cd6cdf4c9b058fe6123a806f06f4c8a7650"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/octoberrain/backend/zipball/baed747d62e0f5ca13221a17a78f58ba012189a3",
-                "reference": "baed747d62e0f5ca13221a17a78f58ba012189a3",
+                "url": "https://api.github.com/repos/octoberrain/backend/zipball/d84b8cd6cdf4c9b058fe6123a806f06f4c8a7650",
+                "reference": "d84b8cd6cdf4c9b058fe6123a806f06f4c8a7650",
                 "shasum": ""
             },
             "require": {
@@ -2680,12 +2844,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/octoberrain/cms.git",
-                "reference": "cc5a6a7a64a2a9fc0906c4b066268e66c2c5f1fb"
+                "reference": "6373ac7daf8a39390a2dcaeee566918a129491a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/octoberrain/cms/zipball/cc5a6a7a64a2a9fc0906c4b066268e66c2c5f1fb",
-                "reference": "cc5a6a7a64a2a9fc0906c4b066268e66c2c5f1fb",
+                "url": "https://api.github.com/repos/octoberrain/cms/zipball/6373ac7daf8a39390a2dcaeee566918a129491a4",
+                "reference": "6373ac7daf8a39390a2dcaeee566918a129491a4",
                 "shasum": ""
             },
             "require": {
@@ -2837,12 +3001,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/octoberrain/system.git",
-                "reference": "a9d1d7ff38033e906aa054443e5716d95ba2bff8"
+                "reference": "6884b784046e028aaae9bdf9817aec04caf230d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/octoberrain/system/zipball/a9d1d7ff38033e906aa054443e5716d95ba2bff8",
-                "reference": "a9d1d7ff38033e906aa054443e5716d95ba2bff8",
+                "url": "https://api.github.com/repos/octoberrain/system/zipball/6884b784046e028aaae9bdf9817aec04caf230d8",
+                "reference": "6884b784046e028aaae9bdf9817aec04caf230d8",
                 "shasum": ""
             },
             "require": {
@@ -3060,21 +3224,22 @@
         },
         {
             "name": "phpoffice/phpspreadsheet",
-            "version": "1.2.1",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "36acc372875c4d894dc093825ce4f62209db5a76"
+                "reference": "0e6238c69e863b58aeece61e48ea032696c6dccd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/36acc372875c4d894dc093825ce4f62209db5a76",
-                "reference": "36acc372875c4d894dc093825ce4f62209db5a76",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/0e6238c69e863b58aeece61e48ea032696c6dccd",
+                "reference": "0e6238c69e863b58aeece61e48ea032696c6dccd",
                 "shasum": ""
             },
             "require": {
                 "ext-ctype": "*",
                 "ext-dom": "*",
+                "ext-fileinfo": "*",
                 "ext-gd": "*",
                 "ext-iconv": "*",
                 "ext-libxml": "*",
@@ -3085,23 +3250,27 @@
                 "ext-xmlwriter": "*",
                 "ext-zip": "*",
                 "ext-zlib": "*",
+                "markbaker/complex": "^1.4",
+                "markbaker/matrix": "^1.1",
                 "php": "^5.6|^7.0",
                 "psr/simple-cache": "^1.0"
             },
             "require-dev": {
+                "doctrine/instantiator": "^1.0.0",
                 "dompdf/dompdf": "^0.8.0",
                 "friendsofphp/php-cs-fixer": "@stable",
                 "jpgraph/jpgraph": "^4.0",
                 "mpdf/mpdf": "^7.0.0",
+                "phpcompatibility/php-compatibility": "^8.0",
                 "phpunit/phpunit": "^5.7",
-                "squizlabs/php_codesniffer": "^2.7",
+                "squizlabs/php_codesniffer": "^3.3",
                 "tecnickcom/tcpdf": "^6.2"
             },
             "suggest": {
                 "dompdf/dompdf": "Option for rendering PDF with PDF Writer",
                 "jpgraph/jpgraph": "Option for rendering charts, or including charts with PDF or HTML Writers",
                 "mpdf/mpdf": "Option for rendering PDF with PDF Writer",
-                "tecnick.com/tcpdf": "Option for rendering PDF with PDF Writer"
+                "tecnickcom/tcpdf": "Option for rendering PDF with PDF Writer"
             },
             "type": "library",
             "autoload": {
@@ -3115,19 +3284,22 @@
             ],
             "authors": [
                 {
-                    "name": "Maarten Balliauw",
-                    "homepage": "http://blog.maartenballiauw.be"
-                },
-                {
                     "name": "Erik Tilt"
                 },
                 {
-                    "name": "Franck Lefevre",
-                    "homepage": "http://rootslabs.net"
+                    "name": "Adrien Crivelli"
+                },
+                {
+                    "name": "Maarten Balliauw",
+                    "homepage": "https://blog.maartenballiauw.be"
                 },
                 {
                     "name": "Mark Baker",
-                    "homepage": "http://markbakeruk.net"
+                    "homepage": "https://markbakeruk.net"
+                },
+                {
+                    "name": "Franck Lefevre",
+                    "homepage": "https://rootslabs.net"
                 }
             ],
             "description": "PHPSpreadsheet - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
@@ -3142,7 +3314,7 @@
                 "xls",
                 "xlsx"
             ],
-            "time": "2018-04-10T03:53:16+00:00"
+            "time": "2019-06-30T22:55:25+00:00"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -5811,6 +5983,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2017-06-30T09:13:00+00:00"
         },
         {
